@@ -2,13 +2,12 @@
 #define SCENECONTROLLER_H
 
 #include "Scene.h"
-#include <vector>
 
 class SceneController
 {
 private:
   Scene currentScene;
-  Vector<Scene> scenes;
+  Scene* scenes;
 
 public:
   // Constructor

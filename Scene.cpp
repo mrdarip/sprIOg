@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 // Constructor
-Scene::Scene(int id, auto loop)
+Scene::Scene(int id, void (*loop)())
 {
   this->loop = loop;
   this->id = id;

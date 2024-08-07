@@ -1,5 +1,4 @@
 #include "SceneController.h"
-#include <vector>
 
 // Constructor
 SceneController::SceneController(Scene initialScene)
@@ -20,7 +19,12 @@ void SceneController::changeScene(Scene newScene)
 
 void SceneController::addScene(Scene newScene)
 {
-  this->scenes.push_back(newScene);
+  Scene* temp = this->scenes;
+  this->scenes = new Scene[this->scenes.length + 1];
+  for (int i = 0; i < this->scenes.length; i++)
+  {
+    this->scenes[i] = temp[i];
+  }
 }
 
 void SceneController::runCurrentScene()

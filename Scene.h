@@ -4,12 +4,12 @@
 class Scene
 {
 private:
-  auto loop();
+  void (*loop)();
   int id;
 
 public:
   // Constructor
-  Scene(int id, auto loop);
+  Scene(int id, void (*loop)());
   
   void run();
 
