@@ -8,8 +8,7 @@
 #include <SD.h>
 //#include <SPI.h> shared with screen
 
-Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
-
+Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
 File root;
 void setup() {
