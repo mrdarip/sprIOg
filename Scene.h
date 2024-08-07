@@ -10,6 +10,8 @@ private:
 public:
   // Constructor
   Scene(int id, auto loop);
+  
+  void run();
 
   // Destructor
   ~Scene();

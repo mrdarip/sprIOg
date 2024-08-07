@@ -22,3 +22,8 @@ void SceneController::addScene(Scene newScene)
 {
   this->scenes.push_back(newScene);
 }
+
+void SceneController::runCurrentScene()
+{
+  this->currentScene.;
+}

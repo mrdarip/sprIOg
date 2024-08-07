@@ -12,3 +12,8 @@ Scene::~Scene()
 {
   // Do nothing
 }
+
+void Scene::run()
+{
+  this->loop();
+}

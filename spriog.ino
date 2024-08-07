@@ -1,5 +1,5 @@
-#include "Scene/Scene.h"
-#include "SceneController/SceneController.h"
+#include "Scene.h"
+#include "SceneController.h"
 
 // screen libraries
 #include <Adafruit_GFX.h>
@@ -13,6 +13,10 @@
 
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
+SceneController sceneController = SceneController(Scene("Initial Scene", []() {
+  tft.fillScreen(ST77XX_BLACK);
+  testdrawtext("Initial Scene", ST77XX_WHITE);
+}));
 File root;
 void setup()
 {
@@ -34,14 +38,9 @@ void setup()
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
   testdrawtext("im alive!", ST77XX_WHITE);
-
-  Scene scene1 = Scene([]()
-                       {
-    tft.fillScreen(ST77XX_BLACK);
-    testdrawtext("scene1", ST77XX_WHITE); });
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
+  sceneController.runCurrentScene();
 }

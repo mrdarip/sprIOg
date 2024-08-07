@@ -19,6 +19,7 @@ public:
 
   void changeScene(Scene newScene);
   void addScene(Scene newScene);
+  void runCurrentScene();
 };
 
 #endif // SCENECONTROLLER_H
