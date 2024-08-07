@@ -8,6 +8,7 @@ class SceneController
 private:
   Scene currentScene;
   Scene* scenes;
+  int sceneCount;
 
 public:
   // Constructor

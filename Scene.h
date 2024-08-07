@@ -8,6 +8,8 @@ private:
   int id;
 
 public:
+  Scene() : id(0), loop(nullptr) {}
+
   // Constructor
   Scene(int id, void (*loop)());
   

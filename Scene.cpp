@@ -15,5 +15,7 @@ Scene::~Scene()
 
 void Scene::run()
 {
-  this->loop();
+  if(this->loop != nullptr){
+    this->loop();
+  }
 }

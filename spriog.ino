@@ -15,7 +15,10 @@ Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
 SceneController sceneController = SceneController(Scene("Initial Scene", []() {
   tft.fillScreen(ST77XX_BLACK);
-  testdrawtext("Initial Scene", ST77XX_WHITE);
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print("Initial Scene");
 }));
 File root;
 void setup()
@@ -43,4 +46,11 @@ void setup()
 void loop()
 {
   sceneController.runCurrentScene();
+}
+
+void testdrawtext(char *text, uint16_t color) {
+  tft.setCursor(0, 0);
+  tft.setTextColor(color);
+  tft.setTextWrap(true);
+  tft.print(text);
 }

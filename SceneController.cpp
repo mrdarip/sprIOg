@@ -3,13 +3,14 @@
 // Constructor
 SceneController::SceneController(Scene initialScene)
 {
-  this->currentScene = initialScene;
+  scenes = new Scene[1];
+  scenes[0] = initialScene;
 }
 
 // Destructor
 SceneController::~SceneController()
 {
-  // Do nothing
+  delete[] scenes;
 }
 
 void SceneController::changeScene(Scene newScene)
@@ -19,15 +20,18 @@ void SceneController::changeScene(Scene newScene)
 
 void SceneController::addScene(Scene newScene)
 {
-  Scene* temp = this->scenes;
-  this->scenes = new Scene[this->scenes.length + 1];
-  for (int i = 0; i < this->scenes.length; i++)
+  Scene* temp = new Scene[sceneCount + 1];
+  for (int i = 0; i < sceneCount; i++)
   {
-    this->scenes[i] = temp[i];
+      temp[i] = scenes[i];
   }
+  temp[sceneCount] = newScene;
+  delete[] scenes;
+  scenes = temp;
+  sceneCount++;
 }
 
 void SceneController::runCurrentScene()
 {
-  this->currentScene.;
+  this->currentScene.run();
 }
