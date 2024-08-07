@@ -15,5 +15,6 @@
 
 ## How to make it work (SD card)
 
-1. Open the example file "cardinfo.ino" from the SD library and run it.
+1. Open the example file "cardinfo.ino" from the SD library (from the examples for rpi 2040).
 2. set _MISO = 16; _MOSI = 19; _CS = 21; _SCK = 18;
+3. Run the code with a micro SD and ensure it's working.
