@@ -30,10 +30,10 @@ void setup()
   }
 
   Serial.println("\nInitializing SD card...");
-  SPI.setRX(_MISO);
-  SPI.setTX(_MOSI);
-  SPI.setSCK(_SCK);
-  while (!sdInitialized = SD.begin(_CS))
+  SPI.setRX(16);
+  SPI.setTX(19);
+  SPI.setSCK(18);
+  while (!SD.begin(21))
   {
     delay(1000);
   }
