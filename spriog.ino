@@ -19,6 +19,7 @@ SceneController sceneController = SceneController(Scene(0, []() {
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
   tft.print("Initial Scene");
+  Serial.println("Initial Scene");
 }));
 File root;
 void setup()
@@ -36,6 +37,7 @@ void setup()
   while (!SD.begin(21))
   {
     delay(1000);
+    Serial.print("sd waiting...");
   }
 
   tft.initR(INITR_BLACKTAB);
@@ -46,6 +48,7 @@ void setup()
 void loop()
 {
   sceneController.runCurrentScene();
+  delay(1000);
 }
 
 void testdrawtext(char *text, uint16_t color) {
