@@ -15,7 +15,7 @@ Scene::~Scene()
 
 void Scene::run()
 {
-  if(this->loop != nullptr){
+    
     this->loop();
-  }
+ Serial.print("runniiinng");
 }

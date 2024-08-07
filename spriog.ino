@@ -29,6 +29,9 @@ void print(const char *text)
 
 void println(const char *text)
 {
+  tft.setCursor(cursorx, cursory);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(false);
   print(text);
   cursorx = 0;
   cursory += 10;
@@ -103,7 +106,7 @@ void setup()
 
 void loop()
 {
-  sceneController.runCurrentScene();
+  sampleScene.run();
   delay(1000);
 }
 
