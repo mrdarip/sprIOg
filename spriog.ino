@@ -1,3 +1,6 @@
+#include "Scene/Scene.h"
+#include "SceneController/SceneController.h"
+
 // screen libraries
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
@@ -41,70 +44,4 @@ void setup()
 void loop()
 {
   // put your main code here, to run repeatedly:
-}
-
-class Scene
-{
-private:
-  auto loop();
-  int id;
-
-public:
-  // Constructor
-  Scene(int id,auto loop);
-
-  // Destructor
-  ~Scene();
-};
-
-// Constructor
-Scene::Scene(int id,auto loop)
-{
-  this->loop = loop;
-  this->id = id;
-}
-
-// Destructor
-Scene::~Scene()
-{
-  // Do nothing
-}
-
-class SceneController
-{
-private:
-  Scene currentScene;
-  Scene[] scenes;
-
-public:
-  // Constructor
-  SceneController(Scene initialScene);
-
-  // Destructor
-  ~SceneController();
-
-  void changeScene(Scene newScene);
-  void addScene(Scene newScene);
-};
-
-// Constructor
-SceneController::SceneController(Scene initialScene)
-{
-  this->currentScene = initialScene;
-}
-
-// Destructor
-SceneController::~SceneController()
-{
-  // Do nothing
-}
-
-void SceneController::changeScene(Scene newScene)
-{
-  this->currentScene = newScene;
-}
-
-void SceneController::addScene(Scene newScene)
-{
-  this->scenes.push(newScene);
 }
