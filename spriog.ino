@@ -13,7 +13,7 @@
 
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
-SceneController sceneController = SceneController(Scene("Initial Scene", []() {
+SceneController sceneController = SceneController(Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
