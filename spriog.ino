@@ -13,15 +13,70 @@
 
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
-SceneController sceneController = SceneController(Scene(0, []() {
+File root;
+
+int cursorx = 0;
+int cursory = 0;
+void print(const char *text)
+{
+  tft.setCursor(cursorx, cursory);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(false);
+  tft.print(text);
+  int textWidth = strlen(text) * 6;
+  cursorx += textWidth;
+}
+
+void println(const char *text)
+{
+  print(text);
+  cursorx = 0;
+  cursory += 10;
+}
+
+void printDirectory(File dir, int numTabs) {
+  while (true) {
+
+    File entry = dir.openNextFile();
+    if (!entry) {
+      // no more files
+      break;
+    }
+    for (uint8_t i = 0; i < numTabs; i++) {
+      print("\t");
+    }
+    print(entry.name());
+    if (entry.isDirectory()) {
+      println("/");
+      printDirectory(entry, numTabs + 1);
+    } else {
+
+    }
+    entry.close();
+  }
+}
+
+Scene sampleScene = Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
   tft.print("Initial Scene");
   Serial.println("Initial Scene");
-}));
-File root;
+});
+
+Scene fileDisplayer = Scene(1, []() {
+  Serial.println("File Displayer Scene");
+  printDirectory(root, 0);
+});
+
+
+
+
+SceneController sceneController = SceneController(
+  fileDisplayer
+);
+
 void setup()
 {
   Serial.begin(115200);
@@ -39,6 +94,7 @@ void setup()
     delay(1000);
     Serial.print("sd waiting...");
   }
+  root = SD.open("/");
 
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
