@@ -1,20 +1,13 @@
 {
-    "configurations": [
-        {
-            "name": "Win32",
-            "includePath": [
-                "{$workspaceFolder}/libraries",
-                "C:/Program Files (x86)/Arduino/**",
-                "C:/Users/mrdarip/Documents/Arduino",
-                "C:/Users/mrdarip/Documents/Arduino/libraries/Adafruit_ST7735_and_ST7789_Library",
-                "C:/Users/mrdarip/Documents/Arduino/libraries/Adafruit_GFX_Library"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ]
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "C:/Users/mrdarip/Documents/Arduino/**",
+        "/**"
+      ],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"]
+    }
+  ],
+  "version": 4
 }
