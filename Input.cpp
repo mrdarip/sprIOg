@@ -5,7 +5,10 @@
 Input::Input()
 {
     this->addedButtons = 0;
-    this->chars = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
+
+    char chars[8] = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
+    this->chars = chars;
+    
     this->buttons = new Button[8];
 }
 
