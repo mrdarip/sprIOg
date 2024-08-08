@@ -101,6 +101,33 @@ Scene fileDisplayer = Scene(1, []() {
   printDirectory(root, 0);
 });
 
+Scene fileDisplayer2 = Scene(2, []() {
+  Serial.println("File Displayer Scene 2");
+  printNdirs(root, 0, 5);
+});
+
+Scene fileDisplayer3 = Scene(3, []() {
+  Serial.println("File Displayer Scene 3");
+  printNdirs(root, 0, 10);
+});
+
+Scene testInput = Scene(4, []() {
+  Serial.println("Test Input Scene");
+  Input input = Input();
+  input.addButton('w',Button(5));
+  input.addButton('s',Button(7));
+  input.addButton('l',Button(15));
+  input.b('w').setOnClick([]() {
+    Serial.println("w clicked");
+  });
+
+  while(input.b('l').IsUp()) {
+    input.updateState();
+  }
+
+  sceneController.changeScene(sampleScene);
+});
+
 
 
 

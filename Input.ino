@@ -15,7 +15,7 @@ public:
         
     }
 
-    void addButton(Button button) {
+    void addButton(char id,Button button) {
         Button* temp = new Button[buttonCount + 1];
         for (int i = 0; i < buttonCount; i++)
         {
