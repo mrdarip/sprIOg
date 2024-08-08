@@ -1,9 +1,9 @@
 #include "Scene.h"
 
 // Constructor
-Scene::Scene(int id, void (*loop)())
+Scene::Scene(int id, void (*fun)())
 {
-  this->loop = loop;
+  this->fun = fun;
   this->id = id;
 }
 
@@ -15,6 +15,5 @@ Scene::~Scene()
 
 void Scene::run()
 {
-    this->loop();
- Serial.print("runniiinng");
+  this->fun();
 }

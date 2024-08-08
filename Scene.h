@@ -4,14 +4,14 @@
 class Scene
 {
 private:
-  void (*loop)();
+  void (*fun)();
   int id;
 
 public:
-  Scene() : id(0), loop(nullptr) {}
+  Scene() : id(0), fun(nullptr) {}
 
   // Constructor
-  Scene(int id, void (*loop)());
+  Scene(int id, void (*fun)());
   
   void run();
 
