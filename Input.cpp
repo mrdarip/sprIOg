@@ -1,6 +1,5 @@
-#include "Button.h"
 #include "Input.h"
-
+#include "Button.h"
 
 // Constructor
 Input::Input()
@@ -26,7 +25,17 @@ void Input::updateState()
 
 Button Input::getButton(char id)
 {
-    return buttons[indexOf(id, chars, 8)];
+    int index =0;
+    for (int i = 0; i < 8; i++)
+    {
+        if (chars[i] == id)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    return buttons[index];
 }
 
 Button Input::b(char id)
@@ -36,6 +45,16 @@ Button Input::b(char id)
 
 void Input::addButton(char id, Button button)
 {
-    this->buttons[indexOf(id, chars, 8)] = button;
+
+    int index =0;
+    for (int i = 0; i < 8; i++)
+    {
+        if (chars[i] == id)
+        {
+            index = i;
+            break;
+        }
+    }
+    this->buttons[index] = button;
     this->addedButtons++;
 }

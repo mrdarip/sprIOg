@@ -15,6 +15,8 @@
 
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
+
+
 File root;
 
 int cursorx = 0;
@@ -98,6 +100,10 @@ Scene sampleScene = Scene(0, []() {
   Serial.println("Initial Scene");
 });
 
+SceneController sceneController = SceneController(
+  sampleScene
+);
+
 Scene fileDisplayer = Scene(1, []() {
   Serial.println("File Displayer Scene");
   printDirectory(root, 0);
@@ -106,6 +112,7 @@ Scene fileDisplayer = Scene(1, []() {
 Scene fileDisplayer2 = Scene(2, []() {
   Serial.println("File Displayer Scene 2");
   printNdirs(root, 0, 5);
+  delay(20000);
 });
 
 Scene fileDisplayer3 = Scene(3, []() {
@@ -123,16 +130,25 @@ Scene testInput = Scene(4, []() {
     Serial.println("w clicked");
   });
 
-  while(input.b('l').IsUp()) {
+  while(!input.b('s').IsDown()) {
     input.updateState();
+    delay(100);
+
+    int a = digitalRead(15);
+    int b = digitalRead(5);
+    int c = digitalRead(7);
+    Serial.print ("l:");
+    Serial.print (a);
+    Serial.print (" w:");
+    Serial.print(b);
+    Serial.print (" s:");
+    Serial.println(c);
   }
 
   sceneController.changeScene(sampleScene);
 });
 
-SceneController sceneController = SceneController(
-  fileDisplayer
-);
+
 
 void setup()
 {
@@ -156,6 +172,9 @@ void setup()
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
   testdrawtext("im alive!", ST77XX_WHITE);
+
+  sceneController.addScene(testInput);
+  sceneController.changeScene(testInput);
 }
 
 void loop()

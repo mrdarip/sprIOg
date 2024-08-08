@@ -1,5 +1,5 @@
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef BUTTON_H
+#define BUTTON_H
 
 class Button
 {
@@ -17,6 +17,7 @@ private:
 public:
     Button(int pin);
     ~Button();
+    Button() : pin(-1){};
     void updateState();
     void setOnClick(void (*onClick)());
     void setOnHold(void (*onHold)());
@@ -34,4 +35,4 @@ public:
     bool IsUp();
 };
 
-#endif // SCENE_H
+#endif // BUTTON_H

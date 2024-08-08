@@ -1,12 +1,19 @@
 #include "Button.h"
+#include <Arduino.h>
 
 Button::Button(int pin)
 {
     this->pin = pin;
     this->isPressed = false;
     this->wasPressed = false;
+    this->onClick = nullptr;
+    this->onHold = nullptr;
+    this->onRelease = nullptr;
+    this->onDown = nullptr;
+    this->onUp = nullptr;
 
-    pinMode(pin, INPUT);
+
+    pinMode(pin, INPUT_PULLUP);
 }
 
 Button::~Button()
@@ -15,6 +22,11 @@ Button::~Button()
 
 void Button::updateState()
 {
+    if(this->pin == -1)
+    {
+        return;
+    }
+
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin);
 
@@ -108,4 +120,3 @@ bool Button::IsReleased()
 {
     return !this->isPressed && this->wasPressed;
 }
-

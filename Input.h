@@ -1,5 +1,6 @@
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef INPUT_H
+#define INPUT_H
+
 #include "Button.h"
 
 class Input {
@@ -26,4 +27,4 @@ private:
     const char* chars;
 };
 
-#endif // SCENE_H
+#endif // INPUT_H
