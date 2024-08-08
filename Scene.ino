@@ -15,7 +15,6 @@ Scene::~Scene()
 
 void Scene::run()
 {
-    
     this->loop();
  Serial.print("runniiinng");
 }

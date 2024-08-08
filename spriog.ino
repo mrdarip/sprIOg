@@ -106,7 +106,7 @@ void setup()
 
 void loop()
 {
-  sampleScene.run();
+  sceneController.runCurrentScene();
   delay(1000);
 }
 
