@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "SceneController.h"
+#include "Button.h"
+#include "Input.h"
 
 // screen libraries
 #include <Adafruit_GFX.h>
@@ -127,9 +129,6 @@ Scene testInput = Scene(4, []() {
 
   sceneController.changeScene(sampleScene);
 });
-
-
-
 
 SceneController sceneController = SceneController(
   fileDisplayer
