@@ -28,7 +28,7 @@ void Button::updateState()
     }
 
     this->wasPressed = this->isPressed;
-    this->isPressed = digitalRead(this->pin);
+    this->isPressed = !digitalRead(this->pin);
 
     if (this->IsClicked())
     {
