@@ -14,6 +14,9 @@ Button::Button(int pin)
 
 
     pinMode(pin, INPUT_PULLUP);
+
+    this->isPressed = digitalRead(this->pin) != HIGH;
+    this->wasPressed = this->isPressed;
 }
 
 Button::~Button()
@@ -28,7 +31,7 @@ void Button::updateState()
     }
 
     this->wasPressed = this->isPressed;
-    this->isPressed = !digitalRead(this->pin);
+    this->isPressed = digitalRead(this->pin) != HIGH;
 
     if (this->IsClicked())
     {

@@ -126,11 +126,12 @@ Scene testInput = Scene(4, []() {
   input.addButton('w',Button(5));
   input.addButton('s',Button(7));
   input.addButton('l',Button(15));
+
   input.b('w').setOnClick([]() {
     Serial.println("w clicked");
   });
 
-  while(!input.b('s').IsDown()) {
+  while(true) {
     input.updateState();
     delay(100);
 
