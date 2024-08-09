@@ -23,7 +23,7 @@ Input::~Input()
 
 void Input::updateState()
 {
-    for (int i = 0; i < addedButtons; i++)
+    for (int i = 0; i < 8; i++)
     {
         buttons[i].updateState();
     }
