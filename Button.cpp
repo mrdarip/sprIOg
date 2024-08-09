@@ -82,26 +82,31 @@ void Button::updateState()
 
 void Button::setOnClick(std::function<void()> f)
 {
+    f();
     this->onClick = f;
 }
 
 void Button::setOnHold(std::function<void()> f)
 {
+    f();
     this->onHold = f;
 }
 
 void Button::setOnRelease(std::function<void()> f)
 {
+    f();
     this->onRelease = f;
 }
 
 void Button::setOnDown(std::function<void()> f)
 {
+    f();
     this->onDown = f;
 }
 
 void Button::setOnUp(std::function<void()> f)
 {
+    f();
     this->onUp = f;
 }
 
