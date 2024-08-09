@@ -49,15 +49,24 @@ Button Input::b(char id)
 void Input::addButton(char id, Button button)
 {
 
-    int index = 0;
+    int index = -1;
     for (int i = 0; i < 8; i++)
     {
+        Serial.println("chars[i]: " + String(chars[i]) + " id: " + String(id));
         if (chars[i] == id)
         {
+            Serial.println("found");
             index = i;
             break;
         }
     }
+
+    if (index == -1)
+    {
+        Serial.println("Button not added");
+        return;
+    }
+    
     this->buttons[index] = button;
     this->addedButtons++;
 }
