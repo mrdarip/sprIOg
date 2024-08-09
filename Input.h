@@ -24,7 +24,7 @@ private:
     Button* buttons; //this should be initialized to nullptr?
     int addedButtons;
 
-    const char* chars;
+    char chars[8];
 };
 
 #endif // INPUT_H

@@ -1,13 +1,16 @@
 #include "Input.h"
 #include "Button.h"
+#include <Arduino.h>
 
 // Constructor
 Input::Input()
 {
     this->addedButtons = 0;
 
-    char chars[8] = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
-    this->chars = chars;
+    char tempChars[8] = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
+    for (int i = 0; i < 8; i++) {
+        this->chars[i] = tempChars[i];
+    }
     
     this->buttons = new Button[8];
 }
