@@ -140,6 +140,20 @@ Scene testInput = Scene(4, []() {
   sceneController.changeScene(sampleScene);
 });
 
+Scene teststdfunction = Scene(5, []() {
+  Serial.println("Test std function Scene");
+  std::function<void()> f = []() {
+    Serial.println("Hello from std function");
+  };
+  f();
+  
+  f = []() {
+    Serial.println("Hello from std function 2");
+  };
+  f();
+  sceneController.changeScene(sampleScene);
+});
+
 
 
 void setup()
@@ -165,14 +179,14 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   testdrawtext("im alive!", ST77XX_WHITE);
 
-  sceneController.addScene(testInput);
-  sceneController.changeScene(testInput);
+  sceneController.addScene(teststdfunction);
+  sceneController.changeScene(teststdfunction);
 }
 
 void loop()
 {
   sceneController.runCurrentScene();
-  delay(1000);
+  delay(1000); // this should be removed
 }
 
 void testdrawtext(char *text, uint16_t color) {
