@@ -1,5 +1,6 @@
 #include "Button.h"
 #include <Arduino.h>
+#include <functional>
 
 Button::Button(int pin)
 {
@@ -64,6 +65,31 @@ void Button::updateState()
     {
         this->onUp();
     }
+}
+
+void Button::setOnClick(std::function<void()> f)
+{
+    this->onClick = f;
+}
+
+void Button::setOnHold(std::function<void()> f)
+{
+    this->onHold = f;
+}
+
+void Button::setOnRelease(std::function<void()> f)
+{
+    this->onRelease = f;
+}
+
+void Button::setOnDown(std::function<void()> f)
+{
+    this->onDown = f;
+}
+
+void Button::setOnUp(std::function<void()> f)
+{
+    this->onUp = f;
 }
 
 bool Button::IsDown()

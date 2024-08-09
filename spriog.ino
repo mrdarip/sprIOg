@@ -122,10 +122,6 @@ Scene fileDisplayer3 = Scene(3, []() {
   printNdirs(root, 0, 10);
 });
 
-void sayHello() {
-  Serial.println("Hello");
-}
-
 Scene testInput = Scene(4, []() {
   Serial.println("Test Input Scene");
   Input input = Input();
@@ -133,7 +129,11 @@ Scene testInput = Scene(4, []() {
   input.addButton('s',Button(7));
   input.addButton('l',Button(15));
 
-  //input.b('w').onClick = sayHello;
+  input.b('w').setOnClick(
+    []() {
+      Serial.println("w clicked");
+    }
+  );
   while(!input.b('l').IsClicked()) {
     input.updateState();
     delay(100);
@@ -181,8 +181,8 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   testdrawtext("im alive!", ST77XX_WHITE);
 
-  sceneController.addScene(teststdfunction);
-  sceneController.changeScene(teststdfunction);
+  sceneController.addScene(testInput);
+  sceneController.changeScene(testInput);
 }
 
 void loop()
