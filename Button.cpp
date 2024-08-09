@@ -8,17 +8,12 @@ Button::Button(int pin)
     this->wasPressed = false;
 
     // instead of nullptr, use a lambda function that does nothing
-    this->onClick = []() {
-        Serial.println("Button clicked");
-    };
-    this->onHold = []() {
-        Serial.println("Button holded");
-    };
-    this->onRelease = []() {
-        Serial.println("Button released");
-    };
-    this->onDown = []() {};
-    this->onUp = []() {};
+    this->onClick = nullptr;
+    this->onHold = nullptr;
+    this->onRelease = nullptr;
+    this->onDown = nullptr;
+    this->onUp = nullptr;
+    
 
     pinMode(pin, INPUT_PULLUP);
 
