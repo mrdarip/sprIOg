@@ -1,72 +1,38 @@
 #include "Input.h"
 #include "Button.h"
 #include <Arduino.h>
+#include <map>
 
 // Constructor
 Input::Input()
 {
-    this->addedButtons = 0;
-
-    char tempChars[8] = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
-    for (int i = 0; i < 8; i++) {
-        this->chars[i] = tempChars[i];
-    }
-    
-    this->buttons = new Button[8];
 }
 
 // Destructor
 Input::~Input()
 {
-    delete[] buttons;
+
 }
 
 void Input::updateState()
 {
-    for (int i = 0; i < 8; i++)
+    for (auto &pair : buttons)
     {
-        buttons[i].updateState();
+        pair.second.updateState();
     }
 }
 
-Button Input::getButton(char id)
+Button& Input::getButton(char id)
 {
-    int index = 0;
-    for (int i = 0; i < 8; i++)
-    {
-        if (chars[i] == id)
-        {
-            index = i;
-            break;
-        }
-    }
-
-    return buttons[index];
+    return buttons[id];
 }
 
-Button Input::b(char id)
+Button& Input::b(char id)
 {
-    return getButton(id);
+    return buttons[id];
 }
 
 void Input::addButton(char id, Button button)
 {
-
-    int index = -1;
-    for (int i = 0; i < 8; i++)
-    {
-        if (chars[i] == id)
-        {
-            index = i;
-            break;
-        }
-    }
-
-    if (index == -1)
-    {
-        return;
-    }
-    
-    this->buttons[index] = button;
-    this->addedButtons++;
+    buttons[id] = button;
 }
