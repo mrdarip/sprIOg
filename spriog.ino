@@ -134,16 +134,6 @@ Scene testInput = Scene(4, []() {
   while(!input.b('l').IsClicked()) {
     input.updateState();
     delay(100);
-
-    int a = digitalRead(15);
-    int b = digitalRead(5);
-    int c = digitalRead(7);
-    Serial.print ("l:");
-    Serial.print (a);
-    Serial.print (" w:");
-    Serial.print(b);
-    Serial.print (" s:");
-    Serial.println(c);
   }
 
   sceneController.changeScene(sampleScene);
