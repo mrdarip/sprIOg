@@ -21,7 +21,7 @@ public:
 
 private:
     // Private members
-    Button* buttons;
+    Button* buttons; //this should be initialized to nullptr?
     int addedButtons;
 
     const char* chars;

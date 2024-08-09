@@ -6,12 +6,13 @@ Button::Button(int pin)
     this->pin = pin;
     this->isPressed = false;
     this->wasPressed = false;
-    this->onClick = nullptr;
-    this->onHold = nullptr;
-    this->onRelease = nullptr;
-    this->onDown = nullptr;
-    this->onUp = nullptr;
 
+    //instead of nullptr, use a lambda function that does nothing
+    this->onClick = []() {};
+    this->onHold = []() {};
+    this->onRelease = []() {};
+    this->onDown = []() {};
+    this->onUp = []() {};
 
     pinMode(pin, INPUT_PULLUP);
 

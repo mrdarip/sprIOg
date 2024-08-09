@@ -131,7 +131,7 @@ Scene testInput = Scene(4, []() {
     Serial.println("w clicked");
   });
 
-  while(true) {
+  while(true) {//this is a test loop
     input.updateState();
     delay(100);
 
