@@ -18,6 +18,8 @@ Button::Button(int pin)
 
     this->isPressed = digitalRead(this->pin) != HIGH;
     this->wasPressed = this->isPressed;
+
+    Serial.println(String("Button created with pin")+String(pin)+String(" isPressed: ")+String(this->isPressed));
 }
 
 Button::~Button()
@@ -33,11 +35,13 @@ void Button::updateState()
 
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin) != HIGH;
+    Serial.println(String("Button updated with pin")+String(pin)+String(" isPressed: ")+String(this->isPressed));
 
     if (this->IsClicked())
     {
         if (this->onClick != nullptr)
         {
+            Serial.println("Button clicked");
             this->onClick();
         }
     }
@@ -46,6 +50,7 @@ void Button::updateState()
     {
         if (this->onHold != nullptr)
         {
+            Serial.println("Button holded");
             this->onHold();
         }
     }
@@ -54,6 +59,7 @@ void Button::updateState()
     {
         if (this->onRelease != nullptr)
         {
+            Serial.println("Button released");
             this->onRelease();
         }
     }
@@ -62,6 +68,7 @@ void Button::updateState()
     {
         if (this->onDown != nullptr)
         {
+            Serial.println("Button down");
             this->onDown();
         }
     }
@@ -70,6 +77,7 @@ void Button::updateState()
     {
         if (this->onUp != nullptr)
         {
+            Serial.println("Button up");
             this->onUp();
         }
     }
@@ -112,15 +120,18 @@ bool Button::IsUp()
 
 bool Button::IsClicked()
 {
+    Serial.println(String("Button clicked with pin")+String(pin));
     return this->isPressed && !this->wasPressed;
 }
 
 bool Button::IsHolded()
 {
+    Serial.println(String("Button holded with pin")+String(pin));
     return this->isPressed && this->wasPressed;
 }
 
 bool Button::IsReleased()
 {
+    Serial.println(String("Button released with pin")+String(pin));
     return !this->isPressed && this->wasPressed;
 }
