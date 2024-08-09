@@ -134,8 +134,12 @@ Scene testInput = Scene(4, []() {
       Serial.println("w clicked");
     }
   );
+  Serial.println("w set correctly");
+
   while(!input.b('l').IsClicked()) {
+    Serial.println("in the loop");
     input.updateState();
+    Serial.println("updated state");
     delay(100);
   }
 

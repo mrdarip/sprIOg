@@ -9,11 +9,11 @@ Button::Button(int pin)
     this->wasPressed = false;
 
     // instead of nullptr, use a lambda function that does nothing
-    this->onClick = nullptr;
-    this->onHold = nullptr;
-    this->onRelease = nullptr;
-    this->onDown = nullptr;
-    this->onUp = nullptr;
+    this->onClick = []() {};
+    this->onHold = []() {};
+    this->onRelease = []() {};
+    this->onDown = []() {};
+    this->onUp = []() {};
     
 
     pinMode(pin, INPUT_PULLUP);
@@ -34,9 +34,12 @@ void Button::updateState()
     {
         return;
     }
+    Serial.println("Updating button " + String(this->pin));
 
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin) != HIGH;
+
+    Serial.println("updated values");
 
     if (this->IsClicked())
     {
@@ -44,11 +47,15 @@ void Button::updateState()
         this->onClick();
     }
 
-    if (this->IsHolded())
+    Serial.println("checked click");
+
+    if (this->IsHolded() && onHold != nullptr)
     {
         Serial.println("Button " + String(this->pin) + " holded");
         this->onHold();
     }
+
+    Serial.println("checked hold");
 
     if (this->IsReleased())
     {
@@ -56,15 +63,21 @@ void Button::updateState()
         this->onRelease();
     }
 
+    Serial.println("checked release");
+
     if (this->IsDown())
     {
         this->onDown();
     }
 
+    Serial.println("checked down");
+
     if (this->IsUp())
     {
         this->onUp();
     }
+
+    Serial.println("checked up");
 }
 
 void Button::setOnClick(std::function<void()> f)
