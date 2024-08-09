@@ -7,7 +7,7 @@ Button::Button(int pin)
     this->isPressed = false;
     this->wasPressed = false;
 
-    //instead of nullptr, use a lambda function that does nothing
+    // instead of nullptr, use a lambda function that does nothing
     this->onClick = []() {};
     this->onHold = []() {};
     this->onRelease = []() {};
@@ -19,7 +19,7 @@ Button::Button(int pin)
     this->isPressed = digitalRead(this->pin) != HIGH;
     this->wasPressed = this->isPressed;
 
-    Serial.println(String("Button created with pin")+String(pin)+String(" isPressed: ")+String(this->isPressed));
+    Serial.println(String("Button created with pin") + String(pin) + String(" isPressed: ") + String(this->isPressed));
 }
 
 Button::~Button()
@@ -28,7 +28,7 @@ Button::~Button()
 
 void Button::updateState()
 {
-    if(this->pin == -1)
+    if (this->pin == -1)
     {
         return;
     }
@@ -36,48 +36,33 @@ void Button::updateState()
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin) != HIGH;
 
-    Serial.print("Button " + String(this->pin));
+    Serial.print();
     if (this->IsClicked())
     {
-        Serial.print(" clicked");
-        if (this->onClick != nullptr)
-        {
-            this->onClick();
-        }
+        Serial.println("Button " + String(this->pin) + " clicked");
+        this->onClick();
     }
 
     if (this->IsHolded())
     {
-        Serial.print(" holded");
-        if (this->onHold != nullptr)
-        {
-            this->onHold();
-        }
+        Serial.println("Button " + String(this->pin) + " holded");
+        this->onHold();
     }
 
     if (this->IsReleased())
     {
-        Serial.print(" released");
-        if (this->onRelease != nullptr)
-        {
-            this->onRelease();
-        }
+        Serial.println("Button " + String(this->pin) + " released");
+        this->onRelease();
     }
 
     if (this->IsDown())
     {
-        if (this->onDown != nullptr)
-        {
-            this->onDown();
-        }
+        this->onDown();
     }
 
     if (this->IsUp())
     {
-        if (this->onUp != nullptr)
-        {
-            this->onUp();
-        }
+        this->onUp();
     }
 }
 
