@@ -13,6 +13,8 @@
 #include <SD.h>
 // #include <SPI.h> shared with screen
 
+#include <functional>
+
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
 
@@ -131,7 +133,7 @@ Scene testInput = Scene(4, []() {
   input.addButton('s',Button(7));
   input.addButton('l',Button(15));
 
-  input.b('w').onClick = sayHello;
+  //input.b('w').onClick = sayHello;
   while(!input.b('l').IsClicked()) {
     input.updateState();
     delay(100);
