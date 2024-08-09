@@ -130,7 +130,7 @@ Scene testInput = Scene(4, []() {
   input.addButton('l',Button(15));
 
   input.b('w').setOnClick(
-    []() {
+    [&]() {
       Serial.println("w clicked");
     }
   );
