@@ -123,7 +123,7 @@ Scene fileDisplayer3 = Scene(3, []() {
 });
 
 Scene testInput = Scene(4, []() {
-  Serial.println("Test Input Scene");
+  Serial.println("Test Input Scene, press l to sampleScene");
   Input input = Input();
   input.addButton('w',Button(5));
   input.addButton('s',Button(7));
@@ -131,12 +131,18 @@ Scene testInput = Scene(4, []() {
 
   input.b('w').setOnClick(
     [&]() {
-      Serial.println("w clicked");
+      println("w clicked");
+    }
+  );
+  
+  input.b('s').setOnClick(
+    [&]() {
+      println("s clicked");
     }
   );
 
 
-  while(!input.b('l').IsClicked()) {
+  while(input.b('l').IsUp()) {
     input.updateState();
     delay(100);
   }
