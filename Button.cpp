@@ -36,7 +36,6 @@ void Button::updateState()
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin) != HIGH;
 
-    Serial.print();
     if (this->IsClicked())
     {
         Serial.println("Button " + String(this->pin) + " clicked");
