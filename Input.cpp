@@ -25,7 +25,6 @@ void Input::updateState()
 {
     for (int i = 0; i < 8; i++)
     {
-        Serial.println("Updating button " + String(i));
         buttons[i].updateState();
     }
 }

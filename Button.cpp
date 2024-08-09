@@ -34,12 +34,9 @@ void Button::updateState()
     {
         return;
     }
-    Serial.println("Updating button " + String(this->pin));
 
     this->wasPressed = this->isPressed;
     this->isPressed = digitalRead(this->pin) != HIGH;
-
-    Serial.println("updated values");
 
     if (this->IsClicked())
     {
@@ -47,15 +44,11 @@ void Button::updateState()
         this->onClick();
     }
 
-    Serial.println("checked click");
-
     if (this->IsHolded() && onHold != nullptr)
     {
         Serial.println("Button " + String(this->pin) + " holded");
         this->onHold();
     }
-
-    Serial.println("checked hold");
 
     if (this->IsReleased())
     {
@@ -63,21 +56,15 @@ void Button::updateState()
         this->onRelease();
     }
 
-    Serial.println("checked release");
-
     if (this->IsDown())
     {
         this->onDown();
     }
 
-    Serial.println("checked down");
-
     if (this->IsUp())
     {
         this->onUp();
     }
-
-    Serial.println("checked up");
 }
 
 void Button::setOnClick(std::function<void()> f)
