@@ -7,11 +7,6 @@ private:
     bool isPressed;
     bool wasPressed;
     int pin;
-    void (*onClick)();
-    void (*onHold)();
-    void (*onRelease)();
-    void (*onDown)();
-    void (*onUp)();
     //void (*onLongPress)();
     //int holdTime;
 public:
@@ -19,14 +14,13 @@ public:
     ~Button();
     Button() : pin(-1){};
     void updateState();
-    void setOnClick(void (*onClick)());
-    void setOnHold(void (*onHold)());
-    void setOnRelease(void (*onRelease)());
-    void setOnDown(void (*onDown)());
-    void setOnUp(void (*onUp)());
 
-    //void setOnLongPress(void (*onLongPress)());
-    //void setHoldTime(int holdTime);
+    void (*onClick)();
+    void (*onHold)();
+    void (*onRelease)();
+    void (*onDown)();
+    void (*onUp)();
+
     bool IsClicked();
     bool IsHolded();
     bool IsReleased();

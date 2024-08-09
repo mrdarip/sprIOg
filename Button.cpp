@@ -71,31 +71,6 @@ void Button::updateState()
     }
 }
 
-void Button::setOnClick(void (*onClick)())
-{
-    this->onClick = onClick;
-}
-
-void Button::setOnHold(void (*onHold)())
-{
-    this->onHold = onHold;
-}
-
-void Button::setOnRelease(void (*onRelease)())
-{
-    this->onRelease = onRelease;
-}
-
-void Button::setOnDown(void (*onDown)())
-{
-    this->onDown = onDown;
-}
-
-void Button::setOnUp(void (*onUp)())
-{
-    this->onUp = onUp;
-}
-
 bool Button::IsDown()
 {
     return this->isPressed;

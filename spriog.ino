@@ -127,9 +127,9 @@ Scene testInput = Scene(4, []() {
   input.addButton('s',Button(7));
   input.addButton('l',Button(15));
 
-  input.b('w').setOnClick([]() {
-    Serial.println("w clicked");
-  });
+  input.b('w').onClick = []() {
+        Serial.println("wow");
+    };
 
   while(!input.b('l').IsClicked()) {
     input.updateState();
