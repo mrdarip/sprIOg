@@ -206,6 +206,7 @@ Scene sampleGame = Scene(6, []() {
           keyToPress = 'l';
           break;
       }
+      delay(500); 
     }
 
     tft.fillScreen(ST77XX_BLACK);

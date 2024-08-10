@@ -21,7 +21,7 @@ void Input::updateState()
     }
 }
 
-std:map<char, Button> Input::getButtons()
+std::map<char, Button> Input::getButtons()
 {
     return buttons;
 }
