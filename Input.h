@@ -20,6 +20,8 @@ public:
 
     void addButton(char id, Button button);
 
+    std::map<char, Button> getButtons();
+
 private:
     std::map<char, Button> buttons;
 };

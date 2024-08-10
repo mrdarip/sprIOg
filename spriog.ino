@@ -164,7 +164,56 @@ Scene teststdfunction = Scene(5, []() {
   sceneController.changeScene(sampleScene);
 });
 
+Scene sampleGame = Scene(6, []() {
+  Serial.println("Sample Game Scene");
+  Input input = Input();
+  input.addButton('w',Button(5));
+  input.addButton('s',Button(7));
+  input.addButton('l',Button(15));
 
+  int life = 3;
+  char keyToPress = 'l';
+
+  while(life > 0) {
+    println("life: " + String(life));
+    println("press: " + String(keyToPress));
+
+    delay(500); 
+    input.updateState();
+
+    bool failed = true;
+    for (auto &pair : input.getButtons())
+    {
+      if(pair.second.IsDown() && pair.first == keyToPress) {
+        failed = false;
+        break;
+      }
+    }
+
+    if(failed) {
+      life--;
+    } else {
+      int randomNum = random(0, 2);
+      switch (randomNum){
+        case 0:
+          keyToPress = 'w';
+          break;
+        case 1:
+          keyToPress = 's';
+          break;
+        
+        default:
+          keyToPress = 'l';
+          break;
+      }
+    }
+
+    tft.fillScreen(ST77XX_BLACK);
+    cursorx = 0;
+    cursory = 0;
+  }
+
+});
 
 void setup()
 {

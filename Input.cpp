@@ -11,7 +11,6 @@ Input::Input()
 // Destructor
 Input::~Input()
 {
-
 }
 
 void Input::updateState()
@@ -20,6 +19,11 @@ void Input::updateState()
     {
         pair.second.updateState();
     }
+}
+
+std:map<char, Button> Input::getButtons()
+{
+    return buttons;
 }
 
 Button& Input::getButton(char id)
