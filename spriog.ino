@@ -175,8 +175,12 @@ Scene sampleGame = Scene(6, []() {
   char keyToPress = 'l';
 
   while(life > 0) {
-    println("life: " + String(life));
-    println("press: " + String(keyToPress));
+    tft.fillScreen(ST77XX_BLACK);
+    cursorx = 0;
+    cursory = 0;
+
+    println("life: " + life);
+    println("press: " + keyToPress);
 
     delay(500); 
     input.updateState();
@@ -208,10 +212,6 @@ Scene sampleGame = Scene(6, []() {
       }
       delay(500); 
     }
-
-    tft.fillScreen(ST77XX_BLACK);
-    cursorx = 0;
-    cursory = 0;
   }
 
 });
@@ -239,8 +239,8 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   testdrawtext("im alive!", ST77XX_WHITE);
 
-  sceneController.addScene(testInput);
-  sceneController.changeScene(testInput);
+  sceneController.addScene(sampleGame);
+  sceneController.changeScene(sampleGame);
 }
 
 void loop()
