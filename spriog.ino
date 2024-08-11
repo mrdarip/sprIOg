@@ -200,7 +200,7 @@ Scene sampleGame = Scene(6, []() {
 
     if(isSuccessful) {
       int randomNum = random(0, 3);
-      char[] keys = {'w', 's', 'l'};
+      char keys[] = {'w', 's', 'l'};
       keyToPress = keys[randomNum];
     } else {
       life--;
