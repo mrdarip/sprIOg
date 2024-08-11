@@ -20,8 +20,6 @@ Button::Button(int pin)
 
     this->isPressed = digitalRead(this->pin) != HIGH;
     this->wasPressed = this->isPressed;
-
-    Serial.println(String("Button created with pin") + String(pin) + String(" isPressed: ") + String(this->isPressed));
 }
 
 Button::~Button()
@@ -40,19 +38,16 @@ void Button::updateState()
 
     if (this->IsClicked())
     {
-        Serial.println("Button " + String(this->pin) + " clicked");
         this->onClick();
     }
 
     if (this->IsHolded() && onHold != nullptr)
     {
-        Serial.println("Button " + String(this->pin) + " holded");
         this->onHold();
     }
 
     if (this->IsReleased())
     {
-        Serial.println("Button " + String(this->pin) + " released");
         this->onRelease();
     }
 

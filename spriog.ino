@@ -106,7 +106,6 @@ Scene sampleScene = Scene(0, []() {
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
   tft.print("Initial Scene");
-  Serial.println("Initial Scene");
 });
 
 SceneController sceneController = SceneController(
@@ -114,23 +113,19 @@ SceneController sceneController = SceneController(
 );
 
 Scene fileDisplayer = Scene(1, []() {
-  Serial.println("File Displayer Scene");
   printDirectory(root, 0);
 });
 
 Scene fileDisplayer2 = Scene(2, []() {
-  Serial.println("File Displayer Scene 2");
   printNdirs(root, 0, 5);
   delay(20000);
 });
 
 Scene fileDisplayer3 = Scene(3, []() {
-  Serial.println("File Displayer Scene 3");
   printNdirs(root, 0, 10);
 });
 
 Scene testInput = Scene(4, []() {
-  Serial.println("Test Input Scene, press l to sampleScene");
   Input input = Input();
   input.addButton('w',Button(5));
   input.addButton('s',Button(7));
@@ -157,22 +152,7 @@ Scene testInput = Scene(4, []() {
   sceneController.changeScene(sampleScene);
 });
 
-Scene teststdfunction = Scene(5, []() {
-  Serial.println("Test std function Scene");
-  std::function<void()> f = []() {
-    Serial.println("Hello from std function");
-  };
-  f();
-  
-  f = []() {
-    Serial.println("Hello from std function 2");
-  };
-  f();
-  sceneController.changeScene(sampleScene);
-});
-
 Scene sampleGame = Scene(6, []() {
-  Serial.println("Sample Game Scene");
   Input input = Input();
   input.addButton('w',Button(5));
   input.addButton('s',Button(7));
@@ -213,20 +193,12 @@ Scene sampleGame = Scene(6, []() {
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial)
-  {
-    delay(1); // wait for serial port to connect. Needed for native USB port only
-  }
-
-  Serial.println("\nInitializing SD card...");
   SPI.setRX(16);
   SPI.setTX(19);
   SPI.setSCK(18);
   while (!SD.begin(21))
   {
     delay(1000);
-    Serial.print("sd waiting...");
   }
   root = SD.open("/");
 
