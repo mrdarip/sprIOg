@@ -46,6 +46,8 @@
                 "C:\\Users\\mrdarip\\AppData\\Local\\Arduino15\\packages\\rp2040\\hardware\\rp2040\\3.9.4\\libraries\\SD\\src",
                 "C:\\Users\\mrdarip\\AppData\\Local\\Arduino15\\packages\\rp2040\\hardware\\rp2040\\3.9.4\\libraries\\SDFS\\src",
                 "C:\\Users\\mrdarip\\AppData\\Local\\Arduino15\\packages\\rp2040\\hardware\\rp2040\\3.9.4\\libraries\\ESP8266SdFat\\src",
+                "C:\\Users\\mrdarip\\AppData\\Local\\Arduino15\\packages\\rp2040\\hardware\\rp2040\\3.9.4\\libraries\\Keyboard\\src",
+                "C:\\Users\\mrdarip\\AppData\\Local\\Arduino15\\packages\\rp2040\\hardware\\rp2040\\3.9.4\\libraries\\HID_Keyboard\\src",
                 "c:\\users\\mrdarip\\appdata\\local\\arduino15\\packages\\rp2040\\tools\\pqt-gcc\\2.2.0-d04e724\\arm-none-eabi\\include\\c++\\12.3.0",
                 "c:\\users\\mrdarip\\appdata\\local\\arduino15\\packages\\rp2040\\tools\\pqt-gcc\\2.2.0-d04e724\\arm-none-eabi\\include\\c++\\12.3.0\\arm-none-eabi\\thumb",
                 "c:\\users\\mrdarip\\appdata\\local\\arduino15\\packages\\rp2040\\tools\\pqt-gcc\\2.2.0-d04e724\\arm-none-eabi\\include\\c++\\12.3.0\\backward",

@@ -240,6 +240,7 @@ Scene testKeyboard = Scene(5, []() {
   while(true) {
     input.updateState();
     delay(10);
+  }
 });
 
 void setup()
