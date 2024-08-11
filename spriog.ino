@@ -151,8 +151,15 @@ Scene testInput = Scene(4, []() {
 
 Scene sampleGame = Scene(6, []() {
   Input input = Input();
+
   input.addButton('w',Button(5));
+  input.addButton('a',Button(6));
   input.addButton('s',Button(7));
+  input.addButton('d',Button(8));
+
+  input.addButton('i',Button(12));
+  input.addButton('j',Button(13));
+  input.addButton('k',Button(14));
   input.addButton('l',Button(15));
 
   int life = 3;
@@ -177,8 +184,8 @@ Scene sampleGame = Scene(6, []() {
     }
 
     if(isSuccessful) {
-      int randomNum = random(0, 3);
-      char keys[] = {'w', 's', 'l'};
+      int randomNum = random(0, 8);
+      char keys[] = {'w', 'a', 's', 'd', 'i', 'j', 'k', 'l'};
       keyToPress = keys[randomNum];
     } else {
       life--;
