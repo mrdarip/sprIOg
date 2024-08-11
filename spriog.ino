@@ -213,7 +213,7 @@ Scene testKeyboard = Scene(5, []() {
   input.addButton('k',Button(14));
   input.addButton('l',Button(15));
 
-  input.b('w').setOnDown(
+  input.b('w').setOnClick(
     []() {
       Keyboard.press('w');
     }
@@ -221,43 +221,43 @@ Scene testKeyboard = Scene(5, []() {
 
   input.b('a').setOnDown(
     []() {
-      Keyboard.press('a');
+      Keyboard.write('a');
     }
   );
 
   input.b('s').setOnDown(
     []() {
-      Keyboard.press('s');
+      Keyboard.write('s');
     }
   );
 
   input.b('d').setOnDown(
     []() {
-      Keyboard.press('d');
+      Keyboard.write('d');
     }
   );
 
   input.b('i').setOnDown(
     []() {
-      Keyboard.press('i');
+      Keyboard.write('i');
     }
   );
 
   input.b('j').setOnDown(
     []() {
-      Keyboard.press('j');
+      Keyboard.write('j');
     }
   );
 
   input.b('k').setOnDown(
     []() {
-      Keyboard.press('k');
+      Keyboard.write('k');
     }
   );
 
   input.b('l').setOnDown(
     []() {
-      Keyboard.press('l');
+      Keyboard.write('l');
     }
   );
   while(true) {
