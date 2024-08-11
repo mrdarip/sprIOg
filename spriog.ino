@@ -43,6 +43,13 @@ void println(const char *text)
   cursory += 10;
 }
 
+void resetCursor()
+{
+  cursorx = 0;
+  cursory = 0;
+  tft.fillScreen(ST77XX_BLACK);
+}
+
 void printDirectory(File dir, int numTabs) {
   while (true) {
 
@@ -175,43 +182,31 @@ Scene sampleGame = Scene(6, []() {
   char keyToPress = 'l';
 
   while(life > 0) {
-    tft.fillScreen(ST77XX_BLACK);
-    cursorx = 0;
-    cursory = 0;
-
+    resetCursor();
     println("life: " + life);
     println("press: " + keyToPress);
 
-    delay(500); 
+    delay(1000); 
     input.updateState();
 
-    bool failed = true;
+    bool isSuccessful = false;
     for (auto &pair : input.getButtons())
     {
-      if(pair.second.IsDown() && pair.first == keyToPress) {
-        failed = false;
+      if(pair.second.IsDown()) {
+        isSuccessful = pair.first == keyToPress;
         break;
       }
     }
 
-    if(failed) {
-      life--;
+    if(isSuccessful) {
+      int randomNum = random(0, 3);
+      char[] keys = {'w', 's', 'l'};
+      keyToPress = keys[randomNum];
     } else {
-      int randomNum = random(0, 2);
-      switch (randomNum){
-        case 0:
-          keyToPress = 'w';
-          break;
-        case 1:
-          keyToPress = 's';
-          break;
-        
-        default:
-          keyToPress = 'l';
-          break;
-      }
-      delay(500); 
+      life--;
     }
+
+    delay(1000);
   }
 
 });
