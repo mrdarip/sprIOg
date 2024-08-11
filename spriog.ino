@@ -186,7 +186,11 @@ Scene sampleGame = Scene(6, []() {
 
     delay(1000);
   }
-
+  sceneController.changeScene(Scene(5, []() {
+  println("Game Over");
+  delay(5000);
+  sceneController.changeScene(sampleGame);
+}));
 });
 
 void setup()
