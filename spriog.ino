@@ -213,57 +213,33 @@ Scene testKeyboard = Scene(5, []() {
   input.addButton('k',Button(14));
   input.addButton('l',Button(15));
 
-  input.b('w').setOnClick(
-    []() {
-      Keyboard.press('w');
-    }
-  );
+  input.b('w').setOnClick([]() {Keyboard.press('w');});
+  input.b('w').setOnRelease([]() {Keyboard.release('w');});
 
-  input.b('a').setOnDown(
-    []() {
-      Keyboard.write('a');
-    }
-  );
+  input.b('a').setOnClick([]() {Keyboard.press('a');});
+  input.b('a').setOnRelease([]() {Keyboard.release('a');});
 
-  input.b('s').setOnDown(
-    []() {
-      Keyboard.write('s');
-    }
-  );
+  input.b('s').setOnClick([]() {Keyboard.press('s');});
+  input.b('s').setOnRelease([]() {Keyboard.release('s');});
 
-  input.b('d').setOnDown(
-    []() {
-      Keyboard.write('d');
-    }
-  );
+  input.b('d').setOnClick([]() {Keyboard.press('d');});
+  input.b('d').setOnRelease([]() {Keyboard.release('d');});
 
-  input.b('i').setOnDown(
-    []() {
-      Keyboard.write('i');
-    }
-  );
+  input.b('i').setOnClick([]() {Keyboard.press('i');});
+  input.b('i').setOnRelease([]() {Keyboard.release('i');});
 
-  input.b('j').setOnDown(
-    []() {
-      Keyboard.write('j');
-    }
-  );
+  input.b('j').setOnClick([]() {Keyboard.press('j');});
+  input.b('j').setOnRelease([]() {Keyboard.release('j');});
 
-  input.b('k').setOnDown(
-    []() {
-      Keyboard.write('k');
-    }
-  );
+  input.b('k').setOnClick([]() {Keyboard.press('k');});
+  input.b('k').setOnRelease([]() {Keyboard.release('k');});
 
-  input.b('l').setOnDown(
-    []() {
-      Keyboard.write('l');
-    }
-  );
+  input.b('l').setOnClick([]() {Keyboard.press('l');});
+  input.b('l').setOnRelease([]() {Keyboard.release('l');});
+
   while(true) {
     input.updateState();
     delay(10);
-  }
 });
 
 void setup()
