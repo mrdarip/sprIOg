@@ -6,12 +6,13 @@
 // screen libraries
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
-#include <Adafruit_ST7789.h>
 #include <SPI.h>
 
 // SD library
 #include <SD.h>
-// #include <SPI.h> shared with screen
+// SPI.h shared with screen
+
+#include "Keyboard.h"
 
 #include <functional>
 
@@ -198,6 +199,73 @@ Scene sampleGame = Scene(6, []() {
 }));
 });
 
+Scene testKeyboard = Scene(5, []() {
+  Keyboard.begin();
+  Input input = Input();
+
+  input.addButton('w',Button(5));
+  input.addButton('a',Button(6));
+  input.addButton('s',Button(7));
+  input.addButton('d',Button(8));
+
+  input.addButton('i',Button(12));
+  input.addButton('j',Button(13));
+  input.addButton('k',Button(14));
+  input.addButton('l',Button(15));
+
+  input.b('w').setOnDown(
+    []() {
+      Keyboard.press('w');
+    }
+  );
+
+  input.b('a').setOnDown(
+    []() {
+      Keyboard.press('a');
+    }
+  );
+
+  input.b('s').setOnDown(
+    []() {
+      Keyboard.press('s');
+    }
+  );
+
+  input.b('d').setOnDown(
+    []() {
+      Keyboard.press('d');
+    }
+  );
+
+  input.b('i').setOnDown(
+    []() {
+      Keyboard.press('i');
+    }
+  );
+
+  input.b('j').setOnDown(
+    []() {
+      Keyboard.press('j');
+    }
+  );
+
+  input.b('k').setOnDown(
+    []() {
+      Keyboard.press('k');
+    }
+  );
+
+  input.b('l').setOnDown(
+    []() {
+      Keyboard.press('l');
+    }
+  );
+  while(true) {
+    input.updateState();
+    delay(10);
+  }
+});
+
 void setup()
 {
   SPI.setRX(16);
@@ -214,8 +282,8 @@ void setup()
   tft.setRotation(3);
   testdrawtext("im alive!", ST77XX_WHITE);
 
-  sceneController.addScene(sampleGame);
-  sceneController.changeScene(sampleGame);
+  sceneController.addScene(testKeyboard);
+  sceneController.changeScene(testKeyboard);
 }
 
 void loop()
