@@ -171,7 +171,7 @@ Scene sampleGame = Scene(6, []() {
     println("life: " + String(life));
     println("press: " + String(keyToPress));
 
-    delay(1000); 
+    delay(2000); 
     input.updateState();
 
     bool isSuccessful = false;
@@ -190,8 +190,6 @@ Scene sampleGame = Scene(6, []() {
     } else {
       life--;
     }
-
-    delay(1000);
   }
   sceneController.changeScene(Scene(5, []() {
   println("Game Over");
