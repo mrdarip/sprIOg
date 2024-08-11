@@ -23,21 +23,18 @@ File root;
 
 int cursorx = 0;
 int cursory = 0;
-void print(const char *text)
+void print(String text)
 {
   tft.setCursor(cursorx, cursory);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(false);
   tft.print(text);
-  int textWidth = strlen(text) * 6;
+  int textWidth = text.length() * 6;
   cursorx += textWidth;
 }
 
-void println(const char *text)
+void println(String text)
 {
-  tft.setCursor(cursorx, cursory);
-  tft.setTextColor(ST77XX_WHITE);
-  tft.setTextWrap(false);
   print(text);
   cursorx = 0;
   cursory += 10;
@@ -163,8 +160,9 @@ Scene sampleGame = Scene(6, []() {
 
   while(life > 0) {
     resetCursor();
-    println("life: " + life);
-    println("press: " + keyToPress);
+    
+    println("life: " + String(life));
+    println("press: " + String(keyToPress));
 
     delay(1000); 
     input.updateState();
