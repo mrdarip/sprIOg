@@ -243,6 +243,57 @@ Scene testKeyboard = Scene(5, []() {
   }
 });
 
+Scene sceneSelection = Scene(7, []() {
+  Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard};
+  String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard"};
+  int selectedScene = 0;
+  int numScenes = 7;
+
+  Input input = Input();
+  input.addButton('w',Button(5));
+  input.addButton('a',Button(6));
+  input.addButton('s',Button(7));
+  input.addButton('d',Button(8));
+
+  input.addButton('i',Button(12));
+  input.addButton('j',Button(13));
+  input.addButton('k',Button(14));
+  input.addButton('l',Button(15));
+
+  input.b('w').setOnClick([&]() {
+    selectedScene--;
+    if(selectedScene < 0) {
+      selectedScene = numScenes - 1;
+    }
+  });
+
+  input.b('s').setOnClick([&]() {
+    selectedScene++;
+    if(selectedScene >= numScenes) {
+      selectedScene = 0;
+    }
+  });
+
+  input.b('l').setOnClick([&]() {
+    sceneController.changeScene(scenes[selectedScene]);
+  });
+  
+  while(true) {
+    input.updateState();
+    resetCursor();
+    println("Select Scene");
+    for (int i = 0; i < numScenes; i++)
+    {
+      if(i == selectedScene) {
+        print("> ");
+      }
+      println(sceneNames[i]);
+    }
+    
+    delay(100);
+  }
+});
+
 void setup()
 {
   SPI.setRX(16);
@@ -259,8 +310,8 @@ void setup()
   tft.setRotation(3);
   testdrawtext("im alive!", ST77XX_WHITE);
 
-  sceneController.addScene(testKeyboard);
-  sceneController.changeScene(testKeyboard);
+  sceneController.addScene(sceneSelection);
+  sceneController.changeScene(sceneSelection);
 }
 
 void loop()
