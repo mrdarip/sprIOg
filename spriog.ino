@@ -243,6 +243,18 @@ Scene testKeyboard = Scene(5, []() {
   }
 });
 
+void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
+  resetCursor();
+  println("Select Scene");
+  for (int i = 0; i < numScenes; i++)
+  {
+    if(i == selectedScene) {
+      print("> ");
+    }
+    println(sceneNames[i]);
+  }
+}
+
 Scene sceneSelection = Scene(7, []() {
   Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard};
   String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard"};
@@ -265,6 +277,8 @@ Scene sceneSelection = Scene(7, []() {
     if(selectedScene < 0) {
       selectedScene = numScenes - 1;
     }
+
+    updateUI(numScenes, selectedScene, sceneNames);
   });
 
   input.b('s').setOnClick([&]() {
@@ -272,25 +286,18 @@ Scene sceneSelection = Scene(7, []() {
     if(selectedScene >= numScenes) {
       selectedScene = 0;
     }
+
+    updateUI(numScenes, selectedScene, sceneNames);
   });
 
   input.b('l').setOnClick([&]() {
-    sceneController.changeScene(scenes[selectedScene]);
+    println("changing scene to " + sceneNames[selectedScene]);
+    sceneController.changeScene(&scenes[selectedScene]);
   });
   
   while(true) {
     input.updateState();
-    resetCursor();
-    println("Select Scene");
-    for (int i = 0; i < numScenes; i++)
-    {
-      if(i == selectedScene) {
-        print("> ");
-      }
-      println(sceneNames[i]);
-    }
-    
-    delay(100);
+    delay(10);
   }
 });
 
@@ -299,11 +306,10 @@ void setup()
   SPI.setRX(16);
   SPI.setTX(19);
   SPI.setSCK(18);
-  while (!SD.begin(21))
-  {
-    delay(1000);
-  }
-  root = SD.open("/");
+  
+  SD.begin(21))
+  
+  //root = SD.open("/");
 
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
