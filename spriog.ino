@@ -290,9 +290,9 @@ Scene sceneSelection = Scene(7, []() {
     updateUI(numScenes, selectedScene, sceneNames);
   });
 
-  input.b('l').setOnClick([&]() {
+  input.b('l').setOnClick([=]() {
     println("changing scene to " + sceneNames[selectedScene]);
-    sceneController.changeScene(scenes[selectedScene]);
+    sceneController.changeScene(selectedScene);
   });
   
   while(true) {
@@ -308,6 +308,7 @@ void setup()
   SPI.setSCK(18);
   
   SD.begin(21);
+  Serial.begin(9600);
   
   //root = SD.open("/");
 

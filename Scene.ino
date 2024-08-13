@@ -17,3 +17,8 @@ void Scene::run()
 {
   this->fun();
 }
+
+int Scene::getId()
+{
+  return this->id;
+}

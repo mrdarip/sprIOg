@@ -14,7 +14,7 @@ public:
   Scene(int id, void (*fun)());
   
   void run();
-
+  int getId();
   // Destructor
   ~Scene();
 };

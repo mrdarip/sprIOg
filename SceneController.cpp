@@ -1,4 +1,6 @@
 #include "SceneController.h"
+#include "Scene.h"
+#include <Arduino.h>
 
 // Constructor
 SceneController::SceneController(Scene initialScene)
@@ -18,6 +20,19 @@ SceneController::~SceneController()
 void SceneController::changeScene(Scene newScene)
 {
   this->currentScene = newScene;
+}
+
+void SceneController::changeScene(int sceneIndex)
+{
+  Serial.println(sceneIndex);
+  for(int i = 0; i < sceneCount; i++)
+  {
+    if(scenes[i].getId() == sceneIndex)
+    {
+      this->currentScene = scenes[i];
+      return;
+    }
+  }
 }
 
 void SceneController::addScene(Scene newScene)

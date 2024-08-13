@@ -18,6 +18,7 @@ public:
   ~SceneController();
 
   void changeScene(Scene newScene);
+  void changeScene(int sceneIndex);
   void addScene(Scene newScene);
   void runCurrentScene();
 };
