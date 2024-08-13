@@ -20,6 +20,7 @@ public:
   void changeScene(Scene newScene);
   void changeScene(int sceneIndex);
   void addScene(Scene newScene);
+  Scene getCurrentScene();
   void runCurrentScene();
 };
 

@@ -19,6 +19,7 @@ SceneController::~SceneController()
 
 void SceneController::changeScene(Scene newScene)
 {
+  Serial.println("Changing scene to: "+String(newScene.getId()));
   this->currentScene = newScene;
 }
 
@@ -46,6 +47,11 @@ void SceneController::addScene(Scene newScene)
   delete[] scenes;
   scenes = temp;
   sceneCount++;
+}
+
+Scene SceneController::getCurrentScene()
+{
+  return this->currentScene;
 }
 
 void SceneController::runCurrentScene()

@@ -292,10 +292,10 @@ Scene sceneSelection = Scene(7, []() {
 
   input.b('l').setOnClick([=]() {
     println("changing scene to " + sceneNames[selectedScene]);
-    sceneController.changeScene(selectedScene);
+    sceneController.changeScene(scenes[selectedScene]);
   });
   
-  while(true) {
+  while(sceneController.getCurrentScene().getId() == 7) {
     input.updateState();
     delay(10);
   }
