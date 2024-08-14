@@ -20,6 +20,7 @@
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
 File root;
+bool hasSdCard = false;
 
 SceneController sceneController = SceneController(
   sampleScene
@@ -31,24 +32,26 @@ void setup()
   SPI.setTX(19);
   SPI.setSCK(18);
   
-  SD.begin(21);
+  hasSdCard = SD.begin(21);
   Serial.begin(9600);
   
-  //root = SD.open("/");
+  if(hasSdCard){
+    root = SD.open("/");
+  }
 
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
-  testdrawtext("im alive!", ST77XX_WHITE);
 
   sceneController.addScene(sceneSelection);
   sceneController.changeScene(sceneSelection);
+  
+  testdrawtext("Sprig is ready", ST77XX_WHITE);
 }
 
 void loop()
 {
   sceneController.runCurrentScene();
-  delay(1000); // this should be removed
 }
 
 void testdrawtext(char *text, uint16_t color) {
