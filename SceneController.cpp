@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 // Constructor
-SceneController::init(Scene initialScene)
+void SceneController::init(Scene initialScene)
 {
   this->scenes = new Scene[1];
   this->scenes[0] = initialScene;
