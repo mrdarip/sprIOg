@@ -1,4 +1,6 @@
-sampleScene = Scene(0, []() {
+
+
+Scene sampleScene = Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
@@ -6,20 +8,20 @@ sampleScene = Scene(0, []() {
   tft.print("Initial Scene");
 });
 
-fileDisplayer = Scene(1, []() {
+Scene fileDisplayer = Scene(1, []() {
   printDirectory(root, 0);
 });
 
-fileDisplayer2 = Scene(2, []() {
+Scene fileDisplayer2 = Scene(2, []() {
   printNdirs(root, 0, 5);
   delay(20000);
 });
 
-fileDisplayer3 = Scene(3, []() {
+Scene fileDisplayer3 = Scene(3, []() {
   printNdirs(root, 0, 10);
 });
 
-testInput = Scene(4, []() {
+Scene testInput = Scene(4, []() {
   Input input = Input();
   input.addButton('w',Button(5));
   input.addButton('s',Button(7));
@@ -46,7 +48,7 @@ testInput = Scene(4, []() {
   sceneController.changeScene(sampleScene);
 });
 
-sampleGame = Scene(6, []() {
+Scene sampleGame = Scene(6, []() {
   Input input = Input();
 
   input.addButton('w',Button(5));
@@ -95,7 +97,7 @@ sampleGame = Scene(6, []() {
 }));
 });
 
-testKeyboard = Scene(5, []() {
+Scene testKeyboard = Scene(5, []() {
   Keyboard.begin();
   Input input = Input();
 
@@ -151,7 +153,7 @@ void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
   }
 }
 
-sceneSelection = Scene(7, []() {
+Scene sceneSelection = Scene(7, []() {
   Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard};
   String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard"};
   int selectedScene = 0;
