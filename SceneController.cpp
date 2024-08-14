@@ -5,16 +5,16 @@
 // Constructor
 void SceneController::init(Scene initialScene)
 {
-  this->scenes = new Scene[1];
-  this->scenes[0] = initialScene;
-  this->sceneCount = 1;
-  this->currentScene = initialScene;
+  scenes = new Scene[1];
+  scenes[0] = initialScene;
+  sceneCount = 1;
+  currentScene = initialScene;
 }
 
 void SceneController::changeScene(Scene newScene)
 {
   Serial.println("Changing scene to: "+String(newScene.getId()));
-  this->currentScene = newScene;
+  currentScene = newScene;
 }
 
 void SceneController::changeScene(int sceneIndex)
@@ -24,7 +24,7 @@ void SceneController::changeScene(int sceneIndex)
   {
     if(scenes[i].getId() == sceneIndex)
     {
-      this->currentScene = scenes[i];
+      currentScene = scenes[i];
       return;
     }
   }
@@ -45,10 +45,10 @@ void SceneController::addScene(Scene newScene)
 
 Scene SceneController::getCurrentScene()
 {
-  return this->currentScene;
+  return currentScene;
 }
 
 void SceneController::runCurrentScene()
 {
-  this->currentScene.run();
+  currentScene.run();
 }
