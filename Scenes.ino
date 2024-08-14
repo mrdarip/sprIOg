@@ -45,7 +45,7 @@ Scene testInput = Scene(4, []() {
     delay(100);
   }
 
-  SceneController.changeScene(sampleScene);
+  SceneController::changeScene(sampleScene);
 });
 
 Scene sampleGame = Scene(6, []() {
@@ -90,10 +90,10 @@ Scene sampleGame = Scene(6, []() {
       life--;
     }
   }
-  sceneController.changeScene(Scene(5, []() {
+  SceneController::changeScene(Scene(5, []() {
   println("Game Over");
   delay(5000);
-  sceneController.changeScene(sampleGame);
+  SceneController::changeScene(sampleGame);
 }));
 });
 
@@ -190,10 +190,10 @@ Scene sceneSelection = Scene(7, []() {
 
   input.b('l').setOnClick([=]() {
     println("changing scene to " + sceneNames[selectedScene]);
-    sceneController.changeScene(scenes[selectedScene]);
+    SceneController::changeScene(scenes[selectedScene]);
   });
   
-  while(sceneController.getCurrentScene().getId() == 7) {
+  while(SceneController::getCurrentScene().getId() == 7) {
     input.updateState();
     delay(10);
   }
