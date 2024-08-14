@@ -45,7 +45,7 @@ Scene testInput = Scene(4, []() {
     delay(100);
   }
 
-  sceneController.changeScene(sampleScene);
+  SceneController.changeScene(sampleScene);
 });
 
 Scene sampleGame = Scene(6, []() {
@@ -198,3 +198,5 @@ Scene sceneSelection = Scene(7, []() {
     delay(10);
   }
 });
+
+SceneController::init(sampleScene);
