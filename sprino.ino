@@ -13,12 +13,17 @@
 // SPI.h shared with screen
 
 #include "Keyboard.h"
-
 #include <functional>
+
+#include<Scenes.h>
 
 Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 
 File root;
+
+SceneController sceneController = SceneController(
+  sampleScene
+);
 
 void setup()
 {
