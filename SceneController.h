@@ -6,22 +6,17 @@
 class SceneController
 {
 private:
-  Scene currentScene;
-  Scene* scenes; //this should be initialized to nullptr?
-  int sceneCount;
+  static Scene currentScene;
+  static Scene* scenes; //this should be initialized to nullptr?
+  static int sceneCount;
 
 public:
-  // Constructor
-  SceneController(Scene initialScene);
-
-  // Destructor
-  ~SceneController();
-
-  void changeScene(Scene newScene);
-  void changeScene(int sceneIndex);
-  void addScene(Scene newScene);
-  Scene getCurrentScene();
-  void runCurrentScene();
+  static void init(Scene initialScene);
+  static void changeScene(Scene newScene);
+  static void changeScene(int sceneIndex);
+  static void addScene(Scene newScene);
+  static Scene getCurrentScene();
+  static void runCurrentScene();
 };
 
 #endif // SCENECONTROLLER_H

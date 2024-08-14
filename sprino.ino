@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "SceneController.h"
+#include "SceneController::h"
 #include "Button.h"
 #include "Input.h"
 
@@ -22,10 +22,6 @@ Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 File root;
 bool hasSdCard = false;
 
-SceneController sceneController = SceneController(
-  sampleScene
-);
-
 void setup()
 {
   SPI.setRX(16);
@@ -43,15 +39,14 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
 
-  sceneController.addScene(sceneSelection);
-  sceneController.changeScene(sceneSelection);
+  SceneController::init(sampleScene);
   
   testdrawtext("Sprig is ready", ST77XX_WHITE);
 }
 
 void loop()
 {
-  sceneController.runCurrentScene();
+  SceneController::runCurrentScene();
 }
 
 void testdrawtext(char *text, uint16_t color) {

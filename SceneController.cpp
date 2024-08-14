@@ -3,18 +3,12 @@
 #include <Arduino.h>
 
 // Constructor
-SceneController::SceneController(Scene initialScene)
+SceneController::init(Scene initialScene)
 {
   this->scenes = new Scene[1];
   this->scenes[0] = initialScene;
   this->sceneCount = 1;
   this->currentScene = initialScene;
-}
-
-// Destructor
-SceneController::~SceneController()
-{
-  delete[] scenes;
 }
 
 void SceneController::changeScene(Scene newScene)
