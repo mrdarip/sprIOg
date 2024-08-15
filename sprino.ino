@@ -45,6 +45,7 @@ void setup()
 void loop()
 {
   SceneController::runCurrentScene();
+  delay(1000);
 }
 
 void testdrawtext(char *text, uint16_t color) {

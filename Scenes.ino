@@ -186,7 +186,7 @@ Scene sceneSelection = Scene(7, []() {
     updateUI(numScenes, selectedScene, sceneNames);
   });
 
-  input.b('l').setOnClick([=]() {
+  input.b('l').setOnClick([&]() {
     println("changing scene to " + sceneNames[selectedScene]);
     SceneController::changeScene(scenes[selectedScene]);
   });
@@ -198,7 +198,6 @@ Scene sceneSelection = Scene(7, []() {
 });
 
 void initScenes() {
-  SceneController::init(sceneSelection);
   SceneController::addScene(fileDisplayer);
   SceneController::addScene(fileDisplayer2);
   SceneController::addScene(fileDisplayer3);
@@ -206,4 +205,5 @@ void initScenes() {
   SceneController::addScene(sampleGame);
   SceneController::addScene(testKeyboard);
   SceneController::addScene(sceneSelection);
+  SceneController::init(sceneSelection);
 }
