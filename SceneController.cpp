@@ -2,6 +2,10 @@
 #include "Scene.h"
 #include <Arduino.h>
 
+Scene SceneController::currentScene;
+Scene* SceneController::scenes;
+int SceneController::sceneCount;
+
 // Constructor
 void SceneController::init(Scene initialScene)
 {
