@@ -196,14 +196,3 @@ Scene sceneSelection = Scene(7, []() {
     delay(10);
   }
 });
-
-void initScenes() {
-  SceneController::addScene(fileDisplayer);
-  SceneController::addScene(fileDisplayer2);
-  SceneController::addScene(fileDisplayer3);
-  SceneController::addScene(testInput);
-  SceneController::addScene(sampleGame);
-  SceneController::addScene(testKeyboard);
-  SceneController::addScene(sceneSelection);
-  SceneController::init(sceneSelection);
-}

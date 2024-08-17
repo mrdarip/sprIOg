@@ -36,8 +36,6 @@ void setup()
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
-
-  initScenes();
   
   testdrawtext("Sprig is ready", ST77XX_WHITE);
 }

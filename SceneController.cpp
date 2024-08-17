@@ -36,6 +36,12 @@ void SceneController::changeScene(int sceneIndex)
 
 void SceneController::addScene(Scene newScene)
 {
+  if(sceneCount == 0)
+  {
+    init(newScene);
+    return;
+  }
+  
   Scene* temp = new Scene[sceneCount + 1];
   for (int i = 0; i < sceneCount; i++)
   {
