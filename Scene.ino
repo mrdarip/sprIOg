@@ -4,6 +4,8 @@
 // Constructor
 Scene::Scene(int id, void (*fun)())
 {
+  Serial.println("Creating scene: "+String(id));
+
   this->fun = fun;
   this->id = id;
 
@@ -14,6 +16,7 @@ Scene::Scene(int id, void (*fun)())
 Scene::~Scene()
 {
   SceneController::removeScene(this->id);
+  Serial.println("Deleting scene: "+String(this->id));
 }
 
 void Scene::run()

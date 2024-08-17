@@ -9,6 +9,7 @@ int SceneController::sceneCount = 0;
 // Constructor
 void SceneController::init(Scene initialScene)
 {
+  Serial.println("Initializing scene controller");
   scenes = new Scene[1];
   scenes[0] = initialScene;
   sceneCount = 1;
@@ -36,8 +37,10 @@ void SceneController::changeScene(int sceneIndex)
 
 void SceneController::addScene(Scene newScene)
 {
+  Serial.println("Adding scene: "+String(newScene.getId()));
   if(sceneCount == 0)
   {
+    Serial.println("Initializing scene controller");
     init(newScene);
     return;
   }

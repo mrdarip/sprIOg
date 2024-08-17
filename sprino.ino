@@ -42,7 +42,8 @@ void setup()
 
 void loop()
 {
-  SceneController::runCurrentScene();
+  Serial.println("Looping");
+  //SceneController::runCurrentScene();
   delay(1000);
 }
 
