@@ -4,7 +4,7 @@
 
 Scene SceneController::currentScene;
 Scene* SceneController::scenes;
-int SceneController::sceneCount;
+int SceneController::sceneCount = 0;
 
 // Constructor
 void SceneController::init(Scene initialScene)
