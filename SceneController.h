@@ -17,6 +17,8 @@ public:
   static void addScene(Scene newScene);
   static Scene getCurrentScene();
   static void runCurrentScene();
+  static void removeScene(int sceneIndex);
+  static void removeScene(Scene scene);
 };
 
 #endif // SCENECONTROLLER_H

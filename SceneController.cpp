@@ -56,3 +56,25 @@ void SceneController::runCurrentScene()
 {
   currentScene.run();
 }
+
+void SceneController::removeScene(int sceneIndex)
+{
+  Scene* temp = new Scene[sceneCount - 1];
+  int j = 0;
+  for (int i = 0; i < sceneCount; i++)
+  {
+    if(scenes[i].getId() != sceneIndex)
+    {
+      temp[j] = scenes[i];
+      j++;
+    }
+  }
+  delete[] scenes;
+  scenes = temp;
+  sceneCount--;
+}
+
+void SceneController::removeScene(Scene scene)
+{
+  removeScene(scene.getId());
+}
