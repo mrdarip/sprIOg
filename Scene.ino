@@ -1,16 +1,19 @@
 #include "Scene.h"
+#include "SceneController.h"
 
 // Constructor
 Scene::Scene(int id, void (*fun)())
 {
   this->fun = fun;
   this->id = id;
+
+  SceneController::addScene(*this);
 }
 
 // Destructor
 Scene::~Scene()
 {
-  // Do nothing
+  SceneController::removeScene(this->id);
 }
 
 void Scene::run()
