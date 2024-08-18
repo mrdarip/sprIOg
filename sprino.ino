@@ -20,6 +20,16 @@ Adafruit_ST7735 tft = Adafruit_ST7735(20, 22, 26);
 File root;
 bool hasSdCard = false;
 
+  Scene sampleScene = Scene(0, []() {
+  tft.fillScreen(ST77XX_BLACK);
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print("Initial Scene");
+});
+
+
+
 void setup()
 {
   SPI.setRX(16);
@@ -37,14 +47,16 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
 
-  while(!Serial.available() || millis() < 5000){
+  while(!Serial.available() && millis() < 5000){
     resetCursor();
     println("No serial :( Timeout in: " + String(millis()) + "ms");
     delay(100);
   } 
   
   println("Sprig is ready");
+
   setupScenes();
+  SceneController::addScene(sampleScene);
 }
 
 void loop()
