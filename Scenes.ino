@@ -1,4 +1,3 @@
-/*
 Scene sampleScene = Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
@@ -198,4 +197,13 @@ Scene sceneSelection = Scene(7, []() {
   }
 });
 
-*/
+void setupScenes() {
+  SceneController::addScene(sampleScene);
+  SceneController::addScene(fileDisplayer);
+  SceneController::addScene(fileDisplayer2);
+  SceneController::addScene(fileDisplayer3);
+  SceneController::addScene(testInput);
+  SceneController::addScene(sampleGame);
+  SceneController::addScene(testKeyboard);
+  SceneController::addScene(sceneSelection);
+}
