@@ -15,6 +15,8 @@ public:
   
   void run();
   int getId();
+  int getId() const;
+
   // Destructor
   ~Scene();
 };
