@@ -10,6 +10,8 @@ Scene::Scene(int id, void (*fun)())
   this->id = id;
 
   SceneController::addScene(*this);
+
+  Serial.println("Scene created: "+String(this->id));
 }
 
 // Destructor

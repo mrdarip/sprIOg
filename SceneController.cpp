@@ -14,6 +14,7 @@ void SceneController::init(Scene initialScene)
   scenes[0] = initialScene;
   sceneCount = 1;
   currentScene = initialScene;
+  Serial.println("Scene controller initialized");
 }
 
 void SceneController::changeScene(Scene newScene)
@@ -40,20 +41,21 @@ void SceneController::addScene(Scene newScene)
   Serial.println("Adding scene: "+String(newScene.getId()));
   if(sceneCount == 0)
   {
-    Serial.println("Initializing scene controller");
+    Serial.println("scene controller was not initialized, initializing with new scene");
     init(newScene);
-    return;
+  }else{
+    Scene* temp = new Scene[sceneCount + 1];
+    for (int i = 0; i < sceneCount; i++)
+    {
+        temp[i] = scenes[i];
+    }
+    temp[sceneCount] = newScene;
+    delete[] scenes;
+    scenes = temp;
+    sceneCount++;
   }
-  
-  Scene* temp = new Scene[sceneCount + 1];
-  for (int i = 0; i < sceneCount; i++)
-  {
-      temp[i] = scenes[i];
-  }
-  temp[sceneCount] = newScene;
-  delete[] scenes;
-  scenes = temp;
-  sceneCount++;
+
+  Serial.println("Scene added: "+String(newScene.getId()));
 }
 
 Scene SceneController::getCurrentScene()
