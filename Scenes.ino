@@ -1,3 +1,4 @@
+/*
 Scene sampleScene = Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
@@ -196,3 +197,4 @@ Scene sceneSelection = Scene(7, []() {
     delay(10);
   }
 });
+*/
