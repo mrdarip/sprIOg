@@ -8,7 +8,7 @@ private:
   int id;
 
 public:
-  Scene() : id(0), fun(nullptr) {} //This should be defined in the .cpp file to avoid potential issues with inline initialization.?
+  Scene() : id(-1), fun(nullptr) {} //This should be defined in the .cpp file to avoid potential issues with inline initialization.?
 
   // Constructor
   Scene(int id, void (*fun)());

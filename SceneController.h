@@ -7,7 +7,7 @@ class SceneController
 {
 private:
   static Scene currentScene;
-  static Scene* scenes; //this should be initialized to nullptr?
+  static Scene* scenes;
   static int sceneCount;
   static void init(Scene initialScene);
 public:

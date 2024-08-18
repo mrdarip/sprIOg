@@ -3,16 +3,16 @@
 #include <Arduino.h>
 
 Scene SceneController::currentScene;
-Scene* SceneController::scenes;
+Scene* SceneController::scenes = nullptr;
 int SceneController::sceneCount = 0;
 
 // Constructor
 void SceneController::init(Scene initialScene)
 {
   Serial.println("Initializing scene controller");
+  sceneCount = 1;
   scenes = new Scene[1];
   scenes[0] = initialScene;
-  sceneCount = 1;
   currentScene = initialScene;
   Serial.println("Scene controller initialized");
 }
@@ -39,21 +39,16 @@ void SceneController::changeScene(int sceneIndex)
 void SceneController::addScene(Scene newScene)
 {
   Serial.println("Adding scene: "+String(newScene.getId()));
-  if(sceneCount == 0)
+
+  Scene* temp = new Scene[sceneCount + 1];
+  for (int i = 0; i < sceneCount; i++)
   {
-    Serial.println("scene controller was not initialized, initializing with new scene");
-    init(newScene);
-  }else{
-    Scene* temp = new Scene[sceneCount + 1];
-    for (int i = 0; i < sceneCount; i++)
-    {
-        temp[i] = scenes[i];
-    }
-    temp[sceneCount] = newScene;
-    delete[] scenes;
-    scenes = temp;
-    sceneCount++;
+      temp[i] = scenes[i];
   }
+  temp[sceneCount] = newScene;
+  delete[] scenes;
+  scenes = temp;
+  sceneCount++;
 
   Serial.println("Scene added: "+String(newScene.getId()));
 }
@@ -89,3 +84,11 @@ void SceneController::removeScene(Scene scene)
 {
   removeScene(scene.getId());
 }
+
+SceneController.init(Scene(0, []() {
+  tft.fillScreen(ST77XX_BLACK);
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print("Default Scene");
+}));

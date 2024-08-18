@@ -9,7 +9,10 @@ Scene::Scene(int id, void (*fun)())
   this->fun = fun;
   this->id = id;
 
-  SceneController::addScene(*this);
+  if(id != -1)
+  {
+    SceneController::addScene(*this);
+  }
 
   Serial.println("Scene created: "+String(this->id));
 }

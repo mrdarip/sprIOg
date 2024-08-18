@@ -45,12 +45,12 @@ void setup()
   testdrawtext("Sprig is ready", ST77XX_WHITE);
 
   
-  Scene sampleScene = Scene(0, []() {
+  Scene sampleScene = Scene(1, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
-  tft.print("Initial Scene");
+  tft.print("Initial Scene222");
 });
 }
 
