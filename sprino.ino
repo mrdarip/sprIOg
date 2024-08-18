@@ -46,18 +46,20 @@ void setup()
 
   
   Scene sampleScene = Scene(1, []() {
-  tft.fillScreen(ST77XX_BLACK);
-  tft.setCursor(0, 0);
-  tft.setTextColor(ST77XX_WHITE);
-  tft.setTextWrap(true);
-  tft.print("Initial Scene222");
-});
+    tft.fillScreen(ST77XX_BLACK);
+    tft.setCursor(0, 0);
+    tft.setTextColor(ST77XX_WHITE);
+    tft.setTextWrap(true);
+    tft.print("Initial Scene222");
+  });
+
+  SceneController::addScene(sampleScene);
 }
 
 void loop()
 {
   Serial.println("Looping");
-  //SceneController::runCurrentScene();
+  SceneController::runCurrentScene();
   delay(1000);
 }
 

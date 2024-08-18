@@ -6,17 +6,6 @@ Scene SceneController::currentScene;
 Scene* SceneController::scenes = nullptr;
 int SceneController::sceneCount = 0;
 
-// Constructor
-void SceneController::init(Scene initialScene)
-{
-  Serial.println("Initializing scene controller");
-  sceneCount = 1;
-  scenes = new Scene[1];
-  scenes[0] = initialScene;
-  currentScene = initialScene;
-  Serial.println("Scene controller initialized");
-}
-
 void SceneController::changeScene(Scene newScene)
 {
   Serial.println("Changing scene to: "+String(newScene.getId()));
@@ -84,11 +73,3 @@ void SceneController::removeScene(Scene scene)
 {
   removeScene(scene.getId());
 }
-
-SceneController.init(Scene(0, []() {
-  tft.fillScreen(ST77XX_BLACK);
-  tft.setCursor(0, 0);
-  tft.setTextColor(ST77XX_WHITE);
-  tft.setTextWrap(true);
-  tft.print("Default Scene");
-}));

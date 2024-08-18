@@ -9,7 +9,6 @@ private:
   static Scene currentScene;
   static Scene* scenes;
   static int sceneCount;
-  static void init(Scene initialScene);
 public:
   static void changeScene(Scene newScene);
   static void changeScene(int sceneIndex);

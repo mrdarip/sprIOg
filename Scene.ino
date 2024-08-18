@@ -9,19 +9,16 @@ Scene::Scene(int id, void (*fun)())
   this->fun = fun;
   this->id = id;
 
-  if(id != -1)
-  {
-    SceneController::addScene(*this);
-  }
-
   Serial.println("Scene created: "+String(this->id));
 }
 
 // Destructor
 Scene::~Scene()
 {
-  SceneController::removeScene(this->id);
-  Serial.println("Deleting scene: "+String(this->id));
+  Serial.print("Destroying scene: "+String(this->id));
+  this->fun = nullptr;
+  this->id = -1;
+  Serial.println(" -> Destroyed successfully");
 }
 
 void Scene::run()
