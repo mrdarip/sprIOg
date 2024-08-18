@@ -36,6 +36,11 @@ void setup()
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
+
+  while(!Serial) {
+    delay(1000);
+    testdrawtext("no serial :(", ST77XX_WHITE);
+  } 
   
   testdrawtext("Sprig is ready", ST77XX_WHITE);
 }
