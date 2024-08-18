@@ -39,6 +39,11 @@ void SceneController::addScene(Scene newScene)
   scenes = temp;
   sceneCount++;
 
+  if(currentScene.getId() == -1)
+  {
+    currentScene = newScene;
+  }
+  
   Serial.println("Scene added: "+String(newScene.getId()));
 }
 
