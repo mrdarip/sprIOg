@@ -1,3 +1,4 @@
+/*
 Scene sampleScene = Scene(0, []() {
   tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
@@ -5,7 +6,7 @@ Scene sampleScene = Scene(0, []() {
   tft.setTextWrap(true);
   tft.print("Initial Scene");
 });
-/*
+
 Scene fileDisplayer = Scene(1, []() {
   printDirectory(root, 0);
 });

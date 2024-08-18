@@ -28,7 +28,7 @@ void setup()
   
   hasSdCard = SD.begin(21);
   Serial.begin(9600);
-  
+
   if(hasSdCard){
     root = SD.open("/");
   }
@@ -37,12 +37,21 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
 
-  while(!Serial) {
+  while(!Serial.available()) {
     delay(1000);
     testdrawtext("no serial :(", ST77XX_WHITE);
   } 
   
   testdrawtext("Sprig is ready", ST77XX_WHITE);
+
+  
+  Scene sampleScene = Scene(0, []() {
+  tft.fillScreen(ST77XX_BLACK);
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print("Initial Scene");
+});
 }
 
 void loop()
