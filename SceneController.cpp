@@ -25,7 +25,7 @@ void SceneController::changeScene(int sceneIndex)
   }
 }
 
-void SceneController::addScene(Scene newScene)
+void SceneController::addScene(Scene& newScene)
 {
   Serial.println("Adding scene: "+String(newScene.getId()));
 

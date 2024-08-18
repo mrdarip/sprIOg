@@ -12,7 +12,7 @@ private:
 public:
   static void changeScene(Scene newScene);
   static void changeScene(int sceneIndex);
-  static void addScene(Scene newScene);
+  static void addScene(Scene& newScene);
   static Scene getCurrentScene();
   static void runCurrentScene();
   static void removeScene(int sceneIndex);
