@@ -37,20 +37,13 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
 
-  while(!Serial.available()) {
+  while(!Serial.available() && millis() < 5000){
+    resetCursor();
     delay(1000);
-    testdrawtext("no serial :(", ST77XX_WHITE);
+    print("No serial :( Timeout in: " + String(millis()) + "ms", ST77XX_WHITE);
   } 
   
   testdrawtext("Sprig is ready", ST77XX_WHITE);
-
-  SceneController::addScene(Scene(1, []() {
-    tft.fillScreen(ST77XX_BLACK);
-    tft.setCursor(0, 0);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setTextWrap(true);
-    tft.print("Initial Scene222");
-  }));
 }
 
 void loop()
@@ -58,11 +51,4 @@ void loop()
   Serial.println("Looping");
   SceneController::runCurrentScene();
   delay(1000);
-}
-
-void testdrawtext(char *text, uint16_t color) {
-  tft.setCursor(0, 0);
-  tft.setTextColor(color);
-  tft.setTextWrap(true);
-  tft.print(text);
 }
