@@ -1,13 +1,11 @@
-Scene sampleScene = Scene(1, []() {
-    tft.fillScreen(ST77XX_BLACK);
-    tft.setCursor(0, 0);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setTextWrap(true);
-    tft.print("Initial Scene");
-  });
+Scene sampleScene = Scene(0, []() {
+  tft.fillScreen(ST77XX_BLACK);
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print("Initial Scene");
+});
 
-
-/*
 Scene fileDisplayer = Scene(1, []() {
   printDirectory(root, 0);
 });
@@ -198,7 +196,14 @@ Scene sceneSelection = Scene(7, []() {
     delay(10);
   }
 });
-*/
+
 void setupScenes() {
+  SceneController::addScene(sceneSelection);
   SceneController::addScene(sampleScene);
+  SceneController::addScene(fileDisplayer);
+  SceneController::addScene(fileDisplayer2);
+  SceneController::addScene(fileDisplayer3);
+  SceneController::addScene(testInput);
+  SceneController::addScene(sampleGame);
+  SceneController::addScene(testKeyboard);
 }
