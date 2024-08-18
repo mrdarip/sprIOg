@@ -31,7 +31,3 @@ int Scene::getId()
 {
   return this->id;
 }
-
-int Scene::getId() const {
-  return this->id;
-}
