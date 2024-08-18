@@ -49,6 +49,7 @@ Scene SceneController::getCurrentScene()
 
 void SceneController::runCurrentScene()
 {
+  Serial.println("Running current scene: "+String(currentScene.getId()));
   currentScene.run();
 }
 

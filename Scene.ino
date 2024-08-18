@@ -23,6 +23,7 @@ Scene::~Scene()
 
 void Scene::run()
 {
+  Serial.println("Running scene: "+String(this->id));
   this->fun();
 }
 
