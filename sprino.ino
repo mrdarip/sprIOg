@@ -39,11 +39,11 @@ void setup()
 
   while(!Serial.available() || millis() < 5000){
     resetCursor();
-    delay(1000);
     println("No serial :( Timeout in: " + String(millis()) + "ms");
+    delay(100);
   } 
   
-  println("Sprig is ready", ST77XX_WHITE);
+  println("Sprig is ready");
   setupScenes();
 }
 
