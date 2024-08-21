@@ -1,3 +1,6 @@
+![1724257618681](https://github.com/user-attachments/assets/a0ee6360-5001-41ef-be56-283fd26397da)
+
+
 ## How to make it work (LED)
 
 1. Install arduino IDE (Exe file) from the official website.
