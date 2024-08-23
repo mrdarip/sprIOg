@@ -140,7 +140,42 @@ Scene testKeyboard = Scene(5, []() {
 });
 
 Scene fileSelector = Scene(8, []() {
-  printFilesInDir(root);
+  Input input = Input();
+  input.addButton('w',Button(5));
+  input.addButton('a',Button(6));
+  input.addButton('s',Button(7));
+  input.addButton('d',Button(8));
+
+  input.addButton('i',Button(12));
+  input.addButton('j',Button(13));
+  input.addButton('k',Button(14));
+  input.addButton('l',Button(15));
+
+  int fileIndex = 0;
+
+  input.b('w').setOnClick([&]() {
+    
+    if(fileIndex > 0) {
+      fileIndex--;
+    }
+
+    resetCursor();
+    printFilesInDir(root, fileIndex);
+   });
+
+  input.b('s').setOnClick([&]() {
+    fileIndex++;
+
+    resetCursor();
+    printFilesInDir(root, fileIndex);
+  });
+
+  printFilesInDir(root, fileIndex);
+
+  while(true) {
+    input.updateState();
+    delay(10);
+  }
 });
 
 void updateUI(int numScenes, int selectedScene, String sceneNames[]) {

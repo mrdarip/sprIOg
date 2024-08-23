@@ -74,7 +74,16 @@ int printNdirs(File dir, int numTabs, int nDirs) {//returns the number of direct
   return hasToPrint - nDirs;
 }
 
-void printFilesInDir(File dir) {
+void printFilesInDir(File dir, int n) {
+  for(int i = 0; i < n; i++) {
+    File entry = dir.openNextFile();
+    if (!entry) {
+      // no more files
+      break;
+    }
+    entry.close();
+  }
+
   while (true) {
     File entry = dir.openNextFile();
     if (!entry) {
