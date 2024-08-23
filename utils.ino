@@ -73,3 +73,37 @@ int printNdirs(File dir, int numTabs, int nDirs) {//returns the number of direct
 
   return hasToPrint - nDirs;
 }
+
+void printFilesInDir(File dir) {
+  while (true) {
+    File entry = dir.openNextFile();
+    if (!entry) {
+      // no more files
+      break;
+    }
+    print(entry.name());
+    if (entry.isDirectory()) {
+      println("/");
+    } else {
+      println("");
+    }
+    entry.close();
+  }
+}
+
+File getNthFile(File dir, int n) {
+  int i = 0;
+  while (true) {
+    File entry = dir.openNextFile();
+    if (!entry) {
+      // no more files
+      break;
+    }
+    if (i == n) {
+      return entry;
+    }
+    i++;
+    entry.close();
+  }
+  return File();
+}

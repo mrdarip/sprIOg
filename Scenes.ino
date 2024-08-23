@@ -139,6 +139,10 @@ Scene testKeyboard = Scene(5, []() {
   }
 });
 
+Scene fileSelector = Scene(8, []() {
+  printFilesInDir(root);
+});
+
 void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
   resetCursor();
   println("Select Scene");
@@ -152,8 +156,8 @@ void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
 }
 
 Scene sceneSelection = Scene(7, []() {
-  Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard};
-  String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard"};
+  Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard, fileSelector};
+  String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard", "fileSelector"};
   int selectedScene = 0;
   int numScenes = 7;
 
@@ -199,6 +203,8 @@ Scene sceneSelection = Scene(7, []() {
   }
 });
 
+
+
 void setupScenes() {
   SceneController::addScene(sceneSelection);
   SceneController::addScene(sampleScene);
@@ -208,4 +214,5 @@ void setupScenes() {
   SceneController::addScene(testInput);
   SceneController::addScene(sampleGame);
   SceneController::addScene(testKeyboard);
+  SceneController::addScene(fileSelector);
 }
