@@ -153,6 +153,7 @@ Scene fileSelector = Scene(8, []() {
 
   int fileIndex = 0;
   File currentDir = root;
+  bool fileSelected = false;
 
   input.b('w').setOnClick([&]() {
     
@@ -161,30 +162,34 @@ Scene fileSelector = Scene(8, []() {
     }
 
     resetCursor();
-    printFilesInDir(root, fileIndex);
+    printFilesInDir(currentDir, fileIndex);
    });
 
   input.b('s').setOnClick([&]() {
     fileIndex++;
 
     resetCursor();
-    printFilesInDir(root, fileIndex);
+    printFilesInDir(currentDir, fileIndex);
   });
 
   input.b('l').setOnClick([&]() {
-    File currentDir = getNthFile(root, fileIndex);
+    File currentDir = getNthFile(currentDir, fileIndex);
     
       fileIndex = 0;
       resetCursor();
       printFilesInDir(currentDir, fileIndex);
+
+      //fileSelected = !currentDir.isDirectory();
   });
 
   printFilesInDir(currentDir, fileIndex);
 
-  while(true) {
+  while(!fileSelected) {
     input.updateState();
     delay(10);
   }
+
+  SceneController::changeScene(sampleScene);
 });
 
 void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
