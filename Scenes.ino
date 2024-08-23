@@ -174,10 +174,13 @@ Scene fileSelector = Scene(8, []() {
 
   input.b('l').setOnClick([&]() {
     File currentDir = getNthFile(currentDir, fileIndex);
-    
-      fileIndex = 0;
-      resetCursor();
-      printFilesInDir(currentDir, fileIndex);
+    Serial.println("Selected: " + currentDir.name());
+    fileIndex = 0;
+    Serial.println("Selected: " + currentDir.name());
+    resetCursor();
+    Serial.println("Selected: " + currentDir.name());
+    printFilesInDir(currentDir, fileIndex);
+    Serial.println("Selected: " + currentDir.name());
 
       //fileSelected = !currentDir.isDirectory();
   });
