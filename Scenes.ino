@@ -152,6 +152,7 @@ Scene fileSelector = Scene(8, []() {
   input.addButton('l',Button(15));
 
   int fileIndex = 0;
+  File currentDir = root;
 
   input.b('w').setOnClick([&]() {
     
@@ -170,7 +171,15 @@ Scene fileSelector = Scene(8, []() {
     printFilesInDir(root, fileIndex);
   });
 
-  printFilesInDir(root, fileIndex);
+  input.b('l').setOnClick([&]() {
+    File currentDir = getNthFile(root, fileIndex);
+    
+      fileIndex = 0;
+      resetCursor();
+      printFilesInDir(currentDir, fileIndex);
+  });
+
+  printFilesInDir(currentDir, fileIndex);
 
   while(true) {
     input.updateState();
