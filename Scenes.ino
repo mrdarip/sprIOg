@@ -190,6 +190,8 @@ Scene sceneSelection = Scene(7, []() {
     println("changing scene to " + sceneNames[selectedScene]);
     SceneController::changeScene(scenes[selectedScene]);
   });
+
+  updateUI(numScenes, selectedScene, sceneNames);
   
   while(SceneController::getCurrentScene().getId() == 7) {
     input.updateState();
