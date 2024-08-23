@@ -37,9 +37,10 @@ void setup()
   tft.fillScreen(ST77XX_BLACK);
   tft.setRotation(3);
 
-  while(!Serial.available() && millis() < 5000){
+  int serialTimeout = 5000;
+  while(!Serial.available() && millis() < serialTimeout){
     resetCursor();
-    println("No serial :( Timeout in: " + String(millis()) + "ms");
+    println("No serial :( Timeout in: " + String(serialTimeout - millis()) + "ms");
     delay(100);
   } 
   
