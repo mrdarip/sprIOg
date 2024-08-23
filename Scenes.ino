@@ -159,7 +159,7 @@ Scene sceneSelection = Scene(7, []() {
   Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard, fileSelector};
   String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard", "fileSelector"};
   int selectedScene = 0;
-  int numScenes = 7;
+  int numScenes = 8;
 
   Input input = Input();
   input.addButton('w',Button(5));
@@ -201,6 +201,8 @@ Scene sceneSelection = Scene(7, []() {
     input.updateState();
     delay(10);
   }
+
+  resetCursor();
 });
 
 
