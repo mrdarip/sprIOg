@@ -5,14 +5,6 @@ void print(String text, bool wrap)
   tft.setCursor(cursorx, cursory);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(wrap);
-  tft.print(text,false);
-  int textWidth = text.length() * 6;
-  cursorx += textWidth;
-}
-{
-  tft.setCursor(cursorx, cursory);
-  tft.setTextColor(ST77XX_WHITE);
-  tft.setTextWrap(false);
   tft.print(text);
   int textWidth = text.length() * 6;
   cursorx += textWidth;
@@ -20,7 +12,7 @@ void print(String text, bool wrap)
 
 void println(String text)
 {
-  print(text);
+  print(text,true);
   cursorx = 0;
   cursory += 10;
 }
@@ -41,9 +33,9 @@ void printDirectory(File dir, int numTabs) {
       break;
     }
     for (uint8_t i = 0; i < numTabs; i++) {
-      print("\t");
+      print("\t", false);
     }
-    print(entry.name());
+    print(entry.name(), false);
     if (entry.isDirectory()) {
       println("/");
       printDirectory(entry, numTabs + 1);
@@ -65,10 +57,10 @@ int printNdirs(File dir, int numTabs, int nDirs) {//returns the number of direct
     }
 
     for (uint8_t i = 0; i < numTabs; i++) {
-      print("\t");
+      print("\t", false);
     }
 
-    print(entry.name());
+    print(entry.name(), false);
     nDirs--;
 
     if (entry.isDirectory()) {
@@ -82,7 +74,7 @@ int printNdirs(File dir, int numTabs, int nDirs) {//returns the number of direct
   return hasToPrint - nDirs;
 }
 
-void printFilesInDir(File dir, int n, int limit = 13) {
+void printFilesInDir(File dir, int n, int limit) {
   for(int i = 0; i < n; i++) {
     File entry = dir.openNextFile();
     if (!entry) {
@@ -98,7 +90,7 @@ void printFilesInDir(File dir, int n, int limit = 13) {
       // no more files
       break;
     }
-    print(entry.name());
+    print(entry.name(), false);
     if (entry.isDirectory()) {
       println("/");
     } else {
