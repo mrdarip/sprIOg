@@ -256,14 +256,28 @@ Scene fileReader = Scene(9, []() {
     delay(10);
   }
 
+  int readLine = 0;
+  bool wantToExit = false;
+
+  printFileLines(currentDir, readLine);
+
 
   input.b('w').setOnClick([&]() {
+    readLine--;
+    if(readLine < 0) {
+      readLine = 0;
+    }
+
+    printFileLines(currentDir, readLine);
   });
 
   input.b('s').setOnClick([&]() {
+    readLine++;
+    printFileLines(currentDir, readLine);
   });
 
   input.b('l').setOnClick([&]() {
+    wantToExit = true;
   });
 
   input.b('k').setOnClick([&]() {
@@ -271,16 +285,20 @@ Scene fileReader = Scene(9, []() {
 
 
   // read from the file until there's nothing else in it:
+  while(!wantToExit) {
+    input.updateState();
+    delay(10);
+  }
+
+  currentDir.close();
+});
+
+void printFileLines(File file, int line) {
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
-  tft.print(readFileLines(currentDir, 0));
-  // close the file:
-  currentDir.close();
-
-  delay(20000);
-  
-});
+  tft.print(readFileLines(file, line));
+}
 
 String readFileLines(File file, int line) {
   String content = "";
