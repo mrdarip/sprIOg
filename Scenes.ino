@@ -200,7 +200,7 @@ Scene fileSelector = Scene(8, []() {
 
   input.b('l').setOnClick([&]() {
     Serial.println("Selected:");
-    File currentDir = getNthFile(currentDir, fileIndex);
+    currentDir = getNthFile(currentDir, fileIndex);
     Serial.println("Selected: " + String(currentDir.name()));
     fileIndex = 0;
     Serial.println("Selected: " + String(currentDir.name()));
