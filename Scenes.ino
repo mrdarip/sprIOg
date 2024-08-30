@@ -182,6 +182,13 @@ Scene fileSelector = Scene(8, []() {
     //fileSelected = !currentDir.isDirectory();
   });
 
+  input.b('k').setOnClick([&]() {
+    currentDir = currentDir.rewindDirectory();
+    fileIndex = 0;
+    resetCursor();
+    printFilesInDir(currentDir, fileIndex);
+  });
+
   printFilesInDir(currentDir, fileIndex);
 
   while(!fileSelected) {
