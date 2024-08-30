@@ -257,6 +257,19 @@ Scene fileReader = Scene(9, []() {
   }
 
 
+  input.b('w').setOnClick([&]() {
+  });
+
+  input.b('s').setOnClick([&]() {
+  });
+
+  input.b('l').setOnClick([&]() {
+  });
+
+  input.b('k').setOnClick([&]() {
+  });
+
+
   // read from the file until there's nothing else in it:
   while (currentDir.available()) {
     char c = currentDir.read();
