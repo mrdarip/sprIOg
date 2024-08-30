@@ -100,19 +100,3 @@ void printFilesInDir(File dir, int n) {
   }
 }
 
-File getNthFile(File dir, int n) {
-  int i = 0;
-  while (true) {
-    File entry = dir.openNextFile();
-    if (!entry) {
-      // no more files
-      break;
-    }
-    if (i == n) {
-      return entry;
-    }
-    i++;
-    entry.close();
-  }
-  return File();
-}
