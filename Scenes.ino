@@ -256,14 +256,23 @@ Scene fileReader = Scene(9, []() {
     delay(10);
   }
 
-  Serial.println("test.txt:");
 
   // read from the file until there's nothing else in it:
   while (currentDir.available()) {
-    Serial.write(currentDir.read());
+    char c = currentDir.read();
+    Serial.write(c);
+
+    //using print and println to display on screen:
+    if(c == '\n') {
+      println("");
+    } else {
+      print(String(c));
+    }
   }
   // close the file:
   currentDir.close();
+
+  delay(20000);
   
 });
 
