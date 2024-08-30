@@ -271,23 +271,36 @@ Scene fileReader = Scene(9, []() {
 
 
   // read from the file until there's nothing else in it:
-  while (currentDir.available()) {
-    char c = currentDir.read();
-    Serial.write(c);
-
-    //using print and println to display on screen:
-    if(c == '\n') {
-      println("");
-    } else {
-      print(String(c),true);
-    }
-  }
+  tft.setCursor(0, 0);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(true);
+  tft.print(readFileLines(currentDir, 0));
   // close the file:
   currentDir.close();
 
   delay(20000);
   
 });
+
+String readFileLines(File file, int line) {
+  String content = "";
+  int pageWidth = 26;
+  int pageHeight = 13;
+  int pageSize = pageWidth * pageHeight;
+  
+  
+  //a page can be as short as pageHeight chars if every line is \n
+  //a page can be as long as pageSize if every char is not \n
+
+  file.seek(line * pageWidth);
+
+  for(int i = 0; i < pageSize; i++) {
+    char c = file.read();
+    content += c;
+  }
+
+  return content;
+}
 
 void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
   resetCursor();
