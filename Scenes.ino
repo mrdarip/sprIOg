@@ -294,6 +294,7 @@ Scene fileReader = Scene(9, []() {
 });
 
 void printFileLines(File file, int line) {
+  tft.fillScreen(ST77XX_BLACK);
   tft.setCursor(0, 0);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextWrap(true);
