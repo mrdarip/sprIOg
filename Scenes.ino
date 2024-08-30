@@ -183,7 +183,7 @@ Scene fileSelector = Scene(8, []() {
   });
 
   input.b('k').setOnClick([&]() {
-    currentDir = currentDir.rewindDirectory();
+    currentDir.rewindDirectory();
     fileIndex = 0;
     resetCursor();
     printFilesInDir(currentDir, fileIndex);
