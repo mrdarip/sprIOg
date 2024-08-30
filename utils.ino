@@ -100,3 +100,31 @@ void printFilesInDir(File dir, int n) {
   }
 }
 
+File getNthFile(File dir, int n)
+{
+  Serial.println("File: " + String(n) + " in " + String(dir.name()));
+  int i = 0;
+  while (true)
+  {
+    Serial.println("Getting file");
+    Serial.println(i);
+    File entry = dir.openNextFile();
+
+    if (!entry)
+    {
+      Serial.println("No more files");
+      // no more files
+      break;
+    }
+    Serial.println("Got file" + String(entry.name()));
+    if (i == n)
+    {
+      Serial.println("Returning file");
+      Serial.println(entry.name());
+      return entry;
+    }
+    i++;
+    entry.close();
+  }
+  return File();
+}
