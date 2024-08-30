@@ -199,6 +199,74 @@ Scene fileSelector = Scene(8, []() {
   SceneController::changeScene(sampleScene);
 });
 
+Scene fileReader = Scene(9, []() {
+  Input input = Input();
+  input.addButton('w',Button(5));
+  input.addButton('a',Button(6));
+  input.addButton('s',Button(7));
+  input.addButton('d',Button(8));
+
+  input.addButton('i',Button(12));
+  input.addButton('j',Button(13));
+  input.addButton('k',Button(14));
+  input.addButton('l',Button(15));
+
+  int fileIndex = 0;
+  File currentDir = root;
+  bool fileSelected = false;
+
+  input.b('w').setOnClick([&]() {
+    
+    if(fileIndex > 0) {
+      fileIndex--;
+    }
+
+    resetCursor();
+    printFilesInDir(currentDir, fileIndex);
+   });
+
+  input.b('s').setOnClick([&]() {
+    fileIndex++;
+
+    resetCursor();
+    printFilesInDir(currentDir, fileIndex);
+  });
+
+  input.b('l').setOnClick([&]() {
+    currentDir = getNthFile(currentDir, fileIndex);
+    Serial.println("Selected: " + String(currentDir.name()));
+    fileIndex = 0;
+    resetCursor();
+    printFilesInDir(currentDir, fileIndex);
+
+    fileSelected = !currentDir.isDirectory();
+  });
+
+  input.b('k').setOnClick([&]() {
+    currentDir.close();
+    fileIndex = 0;
+    resetCursor();
+    printFilesInDir(currentDir, fileIndex);
+  });
+
+  printFilesInDir(currentDir, fileIndex);
+
+  while(!fileSelected) {
+    input.updateState();
+    delay(10);
+  }
+
+  Serial.println("test.txt:");
+
+  // read from the file until there's nothing else in it:
+  while (currentDir.available()) {
+    Serial.write(currentDir.read());
+  }
+  // close the file:
+  currentDir.close();
+  
+});
+
 void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
   resetCursor();
   println("Select Scene");
@@ -212,10 +280,10 @@ void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
 }
 
 Scene sceneSelection = Scene(7, []() {
-  Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard, fileSelector};
-  String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard", "fileSelector"};
+  Scene scenes[] = {sampleScene, fileDisplayer, fileDisplayer2, fileDisplayer3, testInput, sampleGame, testKeyboard, fileSelector, fileReader};
+  String sceneNames[] = {"sampleScene", "fileDisplayer", "fileDisplayer2", "fileDisplayer3", "testInput", "sampleGame", "testKeyboard", "fileSelector", "fileReader"};
   int selectedScene = 0;
-  int numScenes = 8;
+  int numScenes = 9;
 
   Input input = Input();
   input.addButton('w',Button(5));
@@ -273,4 +341,5 @@ void setupScenes() {
   SceneController::addScene(sampleGame);
   SceneController::addScene(testKeyboard);
   SceneController::addScene(fileSelector);
+  SceneController::addScene(fileReader);
 }
