@@ -1,6 +1,14 @@
 int cursorx = 0;
 int cursory = 0;
-void print(String text)
+void print(String text, bool wrap)
+{
+  tft.setCursor(cursorx, cursory);
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextWrap(wrap);
+  tft.print(text,false);
+  int textWidth = text.length() * 6;
+  cursorx += textWidth;
+}
 {
   tft.setCursor(cursorx, cursory);
   tft.setTextColor(ST77XX_WHITE);
@@ -74,7 +82,7 @@ int printNdirs(File dir, int numTabs, int nDirs) {//returns the number of direct
   return hasToPrint - nDirs;
 }
 
-void printFilesInDir(File dir, int n) {
+void printFilesInDir(File dir, int n, int limit = 13) {
   for(int i = 0; i < n; i++) {
     File entry = dir.openNextFile();
     if (!entry) {
@@ -84,7 +92,7 @@ void printFilesInDir(File dir, int n) {
     entry.close();
   }
 
-  while (true) {
+  for(int i = 0; i < limit; i++) {
     File entry = dir.openNextFile();
     if (!entry) {
       // no more files

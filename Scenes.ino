@@ -162,14 +162,14 @@ Scene fileSelector = Scene(8, []() {
     }
 
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex, 13);
    });
 
   input.b('s').setOnClick([&]() {
     fileIndex++;
 
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
   });
 
   input.b('l').setOnClick([&]() {
@@ -177,7 +177,7 @@ Scene fileSelector = Scene(8, []() {
     Serial.println("Selected: " + String(currentDir.name()));
     fileIndex = 0;
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
 
     fileSelected = !currentDir.isDirectory();
   });
@@ -186,10 +186,10 @@ Scene fileSelector = Scene(8, []() {
     currentDir.close();
     fileIndex = 0;
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
   });
 
-  printFilesInDir(currentDir, fileIndex);
+  printFilesInDir(currentDir, fileIndex,13);
 
   while(!fileSelected) {
     input.updateState();
@@ -222,14 +222,14 @@ Scene fileReader = Scene(9, []() {
     }
 
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
    });
 
   input.b('s').setOnClick([&]() {
     fileIndex++;
 
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
   });
 
   input.b('l').setOnClick([&]() {
@@ -237,7 +237,7 @@ Scene fileReader = Scene(9, []() {
     Serial.println("Selected: " + String(currentDir.name()));
     fileIndex = 0;
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
 
     fileSelected = !currentDir.isDirectory();
   });
@@ -246,10 +246,10 @@ Scene fileReader = Scene(9, []() {
     currentDir.close();
     fileIndex = 0;
     resetCursor();
-    printFilesInDir(currentDir, fileIndex);
+    printFilesInDir(currentDir, fileIndex,13);
   });
 
-  printFilesInDir(currentDir, fileIndex);
+  printFilesInDir(currentDir, fileIndex,13);
 
   while(!fileSelected) {
     input.updateState();
@@ -266,7 +266,7 @@ Scene fileReader = Scene(9, []() {
     if(c == '\n') {
       println("");
     } else {
-      print(String(c));
+      print(String(c),true);
     }
   }
   // close the file:
@@ -282,7 +282,7 @@ void updateUI(int numScenes, int selectedScene, String sceneNames[]) {
   for (int i = 0; i < numScenes; i++)
   {
     if(i == selectedScene) {
-      print("> ");
+      print("> ",false);
     }
     println(sceneNames[i]);
   }
