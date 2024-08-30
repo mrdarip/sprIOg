@@ -179,7 +179,7 @@ Scene fileSelector = Scene(8, []() {
     resetCursor();
     printFilesInDir(currentDir, fileIndex);
 
-    //fileSelected = !currentDir.isDirectory();
+    fileSelected = !currentDir.isDirectory();
   });
 
   input.b('k').setOnClick([&]() {
